@@ -24,6 +24,6 @@ export default {
     layout6BackSize: '', // used only for pre-layout = layout-6
 
     //MY CONFIGS
-    baseUrl: "http://jira.tools.orange-sonatel.com",
+    baseUrl: "http://localhost:9090",
 
 };

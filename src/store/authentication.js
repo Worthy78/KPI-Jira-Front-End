@@ -38,25 +38,28 @@ export const checkAuthTimeout = expirationTime => {
 // LOGIN USER
 export const login = (username, password, stayConnected) => dispatch => {
     dispatch(userLoading);
-    const token = btoa(`${username}:${password}`)
-    console.log('btoa(string)', token)
+    // const token = btoa(`${username}:${password}`)
+    // console.log('btoa(string)', token)
     // Headers
     const headers = {
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Basic " + token,
         }
     };
 
+    let body = {
+        username,
+        password
+    }
+
     axios
-        .get(config.baseUrl + "/rest/api/2/user?username=" + username, headers)
+        .post(config.baseUrl + "/authenticate", body, headers)
         .then(res => {
             if (!stayConnected) {
                 const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 24);
                 localStorage.setItem('expirationDate', expirationDate);
             }
 
-            res["key"] = token;
             dispatch(checkAuthTimeout(3600));
             dispatch(authSuccess(res));
 

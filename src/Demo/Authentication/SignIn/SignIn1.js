@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from '../../../store/authentication';
 import config from '../../../config';
-import Loading from '../../UIElements/Loading';
+import Loading from '../../../App/layout/Loader/Loading';
 
 
 class SignUp1 extends React.Component {
@@ -89,7 +89,7 @@ class SignUp1 extends React.Component {
                                                     onChange={this.onStayConnected}
                                                     value={stayConnected}
                                                 />
-                                                <label htmlFor="checkbox-fill-a1" className="cr"> Rester connecter</label>
+                                                <label htmlFor="checkbox-fill-a1" className="cr"> Rester connecté</label>
                                             </div>
                                         </div>
                                         <button className="btn btn-primary shadow-2 mb-4" type="submit">Se connecter</button>

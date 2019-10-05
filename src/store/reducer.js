@@ -31,11 +31,11 @@ const userLoaded = (state, action) => {
 
 const authSuccess = (state, action) => {
     //  localStorage.setItem("id", action.payload.user.id); // save user's id
-    const { key, ...user } = action.payload;
-    localStorage.setItem("token", key);
+    const { token, ...user } = action.payload;
+    localStorage.setItem("token", token);
     return updateObject(state, {
         user,
-        token: key,
+        token,
         isAuthenticated: true,
         isLoading: false
     });
