@@ -9,10 +9,13 @@
     overflow: hidden;
     min-width: 100%;
     min-height: 100vh;
-    a, p > a {
+
+    a,
+    p>a {
         color: $theme-heading-color;
         font-weight: 600;
     }
+
     .btn-auth-gen {
         .btn-icon {
             width: 140px;
@@ -27,14 +30,16 @@
             }
         }
     }
-    .input-group{
+
+    .input-group {
         background: transparent;
     }
+
     .card {
         margin-bottom: 0;
     }
 
-    > div {
+    >div {
         z-index: 5;
     }
 
@@ -43,15 +48,18 @@
         width: 390px;
         padding: 15px;
         z-index: 5;
+
         &.multyform,
         &.subscribe {
             width: 750px;
         }
     }
+
     @media only screen and (max-width: 768px) {
         max-width: 360px;
 
     }
+
     @media only screen and (max-width: 575px) {
         .card {
             .card-body {
@@ -62,6 +70,7 @@
 
     .auth-icon {
         font-size: 30px;
+
         &:before {
             background: $theme-color;
             background-clip: inherit;
@@ -102,10 +111,11 @@
             &.s {
                 width: 20px;
                 height: 20px;
+
                 &:nth-child(2) {
                     top: 150px;
                     right: -150px;
-                    background: $primary-color;
+                    background: $warning-color;
                 }
 
                 &:nth-child(3) {
@@ -125,39 +135,50 @@
         }
     }
 }
+
 /* image variant start */
 .aut-bg-img {
     background-size: cover;
-    /*background-image: url('../../../images/bg-images/bg4.jpg');*/ // amit images
+    /*background-image: url('../../../images/bg-images/bg4.jpg');*/
+    // amit images
     background-repeat: no-repeat;
     background-position: center;
 }
-.aut-bg-img-side{
-    p{
+
+.aut-bg-img-side {
+    p {
         line-height: 2;
     }
 }
+
 .aut-bg-img,
-.aut-bg-img-side{
-    .custom-select, .form-control{
+.aut-bg-img-side {
+
+    .custom-select,
+    .form-control {
         background: transparent;
     }
 }
-.auth-tabs{
-    .card{
+
+.auth-tabs {
+    .card {
         // border-right: 10px;
     }
-    .nav-pills{
+
+    .nav-pills {
         // margin-top: -80px;
     }
-    .tab-content{
+
+    .tab-content {
         overflow: hidden;
         position: relative;
-        .tab-pane > *{
+
+        .tab-pane>* {
             position: relative;
             z-index: 5;
         }
-        .auth-icon{
+
+        .auth-icon {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -168,6 +189,7 @@
         }
     }
 }
+
 /* image varient start */
 @keyframes floating {
     from {
@@ -178,4 +200,5 @@
         transform: rotate(360deg) translate(-10px) rotate(-360deg);
     }
 }
+
 /**====== Authentication css end ======**/

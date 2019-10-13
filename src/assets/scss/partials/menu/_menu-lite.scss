@@ -54,6 +54,7 @@
         }
     }
 }
+
 /* new logo End  */
 /* Pre-loader css start */
 .loader-bg {
@@ -73,6 +74,7 @@
         overflow: hidden;
 
         .loader-fill {
+
             &:after,
             &:before {
                 content: '';
@@ -95,6 +97,7 @@
         }
     }
 }
+
 @keyframes mbar {
     0% {
         left: -35%;
@@ -111,6 +114,7 @@
         right: -35%;
     }
 }
+
 @keyframes m_s {
     0% {
         left: -200%;
@@ -127,6 +131,7 @@
         right: -8%;
     }
 }
+
 /* Pre-loader css end */
 /* header css start */
 .pcoded-header {
@@ -165,7 +170,8 @@
     }
 
     .input-group .input-group-text,
-    a, .btn,
+    a,
+    .btn,
     &.dropdown-toggle {
         color: $header-light-text-color;
 
@@ -184,7 +190,7 @@
         margin-bottom: 0;
         display: inline-block;
 
-        > li {
+        >li {
             line-height: $header-height;
             display: inline-block;
             padding: 0 12px;
@@ -250,6 +256,7 @@
 
             .form-control,
             .search-btn {
+
                 &:active,
                 &:focus,
                 &:hover {
@@ -263,7 +270,7 @@
             .input-group {
                 background: #fff;
                 border: 1px solid #f1f1f1;
-                box-shadow: 0 6px 12px -5px rgba(65,76,78,0.08);
+                box-shadow: 0 6px 12px -5px rgba(65, 76, 78, 0.08);
                 padding: 5px 5px 5px 20px;
 
                 .search-close {
@@ -288,6 +295,7 @@
 
                 .form-control,
                 .search-btn {
+
                     &:active,
                     &:focus,
                     &:hover {
@@ -399,7 +407,7 @@
                     }
 
                     &.notification:hover {
-                        background: transparentize($primary-color,0.9);
+                        background: transparentize($primary-color, 0.9);
                     }
 
                     p {
@@ -491,9 +499,9 @@
                     &:active,
                     &:focus,
                     &:hover {
-                        background: transparentize($primary-color,0.9);
+                        background: transparentize($primary-color, 0.9);
 
-                        > a {
+                        >a {
                             background: transparent;
                         }
                     }
@@ -508,6 +516,7 @@
         }
     }
 }
+
 /* header css end */
 /* menu[ vartical ] css start */
 .mobile-menu {
@@ -714,7 +723,7 @@
         li {
             position: relative;
 
-            > a {
+            >a {
                 text-align: left;
                 padding: 7px 15px;
                 margin: 5px 0 0;
@@ -726,7 +735,7 @@
                     position: relative;
                 }
 
-                > .pcoded-micon {
+                >.pcoded-micon {
                     font-size: 1rem;
                     padding: 4px 7px;
                     margin-right: 7px;
@@ -737,7 +746,7 @@
                     height: 30px;
                     text-align: center;
 
-                    + .pcoded-mtext {
+                    +.pcoded-mtext {
                         position: absolute;
                         top: 11px;
                     }
@@ -745,7 +754,7 @@
             }
 
             &.pcoded-hasmenu {
-                > a {
+                >a {
                     &:after {
                         content: "\e844";
                         font-family: 'feather';
@@ -759,7 +768,7 @@
                 }
 
                 &.pcoded-trigger {
-                    > a {
+                    >a {
                         &:after {
                             transform: rotate(90deg);
                         }
@@ -771,18 +780,18 @@
                 }
 
                 &.pcoded-trigger {
-                    > .pcoded-submenu {
+                    >.pcoded-submenu {
                         display: block;
                     }
 
-                    > a {
+                    >a {
                         position: relative;
                     }
                 }
 
                 .pcoded-submenu {
                     li {
-                        > a {
+                        >a {
                             text-align: left;
                             padding: 7px 7px 7px 60px;
                             margin: 0;
@@ -800,8 +809,8 @@
                         }
 
                         .pcoded-submenu {
-                            > li {
-                                > a {
+                            >li {
+                                >a {
                                     padding: 7px 7px 7px 80px;
 
                                     &:before {
@@ -823,13 +832,14 @@
             }
 
             &.disabled {
-                > a {
+                >a {
                     cursor: default;
                     opacity: 0.5;
                 }
             }
         }
     }
+
     width: $Menu-width;
     height: 100vh;
     top: 0;
@@ -837,7 +847,7 @@
     color: $menu-dark-text-color;
 
     .pcoded-submenu {
-        background: darken($header-dark-background,3%);
+        background: darken($header-dark-background, 3%);
         padding: 15px 0;
     }
 
@@ -893,7 +903,7 @@
             white-space: nowrap;
             overflow: hidden;
 
-            > label {
+            >label {
                 transform: rotateY(-90deg);
                 transform-origin: 0 0;
                 opacity: 0;
@@ -912,12 +922,12 @@
         }
 
         .pcoded-inner-navbar {
-            > li {
-                > a {
+            >li {
+                >a {
                     z-index: 1026;
                     padding: 7px 25px;
 
-                    > .pcoded-mtext {
+                    >.pcoded-mtext {
                         transform: rotateY(-90deg);
                         transform-origin: 0 0;
                         opacity: 0;
@@ -926,7 +936,7 @@
                 }
 
                 &.pcoded-hasmenu {
-                    > a {
+                    >a {
                         &:after {
                             right: 12px;
                         }
@@ -938,7 +948,7 @@
                 }
             }
 
-            > li {
+            >li {
                 &.pcoded-trigger {
                     .pcoded-submenu {
                         &:after {
@@ -948,7 +958,7 @@
                             left: calc(calc(#{$Menu-collapsed-width} / 2) - 3px);
                             width: 1px;
                             height: calc(100% - 49px);
-                            background: transparentize($menu-dark-text-color,0.8);
+                            background: transparentize($menu-dark-text-color, 0.8);
                         }
 
                         li {
@@ -970,12 +980,12 @@
             }
         }
 
-        ~ .pcoded-header {
+        ~.pcoded-header {
             width: calc(100% - #{$Menu-collapsed-width});
         }
 
-        ~ .pcoded-header,
-        ~ .pcoded-main-container {
+        ~.pcoded-header,
+        ~.pcoded-main-container {
             margin-left: $Menu-collapsed-width;
         }
 
@@ -1015,7 +1025,7 @@
             }
 
             .pcoded-menu-caption {
-                > label {
+                >label {
                     transform: rotateY(0deg);
                     opacity: 1;
                 }
@@ -1031,9 +1041,9 @@
             }
 
             .pcoded-inner-navbar {
-                > li {
-                    > a {
-                        > .pcoded-mtext {
+                >li {
+                    >a {
+                        >.pcoded-mtext {
                             transform: rotateY(0deg);
                             opacity: 1;
 
@@ -1045,14 +1055,14 @@
                     }
 
                     &.pcoded-hasmenu {
-                        > a {
+                        >a {
                             &:after {
                                 transform: rotateX(0deg);
                             }
                         }
 
                         &.pcoded-trigger {
-                            > a {
+                            >a {
                                 &:after {
                                     transform: rotateX(0deg) rotate(90deg);
                                 }
@@ -1061,7 +1071,7 @@
                     }
                 }
 
-                > li {
+                >li {
                     &.pcoded-trigger {
                         .pcoded-submenu {
                             &:after {
@@ -1093,34 +1103,37 @@
     }
 
     .pcoded-inner-navbar {
-        li > a {
+        li>a {
+
             &.active,
             &:focus,
             &:hover {
 
-                    color: #1dc4e9;
+                color: $sonatel-color;
 
             }
 
-            .pcoded-submenu > li {
+            .pcoded-submenu>li {
+
                 &.active,
                 &:focus,
                 &:hover {
-                    > a {
+                    >a {
                         &:before {
-                            background: #1dc4e9;
+                            background: $sonatel-color;
                         }
                     }
                 }
             }
         }
 
-        > li {
+        >li {
+
             &.active,
             &.pcoded-trigger {
                 &:after {
                     content: "";
-                    background-color: #1dc4e9;
+                    background-color: $sonatel-color;
                     z-index: 1027;
                     position: absolute;
                     left: 0;
@@ -1129,14 +1142,15 @@
                     height: calc(100% - 5px);
                 }
 
-                > a {
-                    background: darken($menu-dark-background,6%);
+                >a {
+                    background: darken($menu-dark-background, 6%);
                     color: #fff;
                 }
             }
         }
 
-        > .pcoded-menu-caption {
+        >.pcoded-menu-caption {
+
             &.active,
             &.pcoded-trigger {
                 &:after {
@@ -1148,10 +1162,12 @@
 }
 
 .pcoded-navbar {
+
     &.mob-open,
     &.navbar-collapsed:hover {
-        ~ .pcoded-header,
-        ~ .pcoded-main-container {
+
+        ~.pcoded-header,
+        ~.pcoded-main-container {
             margin-left: $Menu-collapsed-width;
 
             &:before {
@@ -1160,12 +1176,13 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0,0,0,0.2);
+                background-color: rgba(0, 0, 0, 0.2);
                 z-index: 1;
             }
         }
     }
 }
+
 /* menu [ vartical ] css end */
 /* menu[ horizontal ] css start */
 .pcoded-navbar {
@@ -1215,18 +1232,18 @@
                 display: none;
             }
 
-            > li {
+            >li {
                 display: inline-block;
                 list-style: outside none none;
                 margin: 0;
                 padding: 0;
                 position: relative;
 
-                > a {
+                >a {
                     margin: 0;
                     padding: 8px 15px;
 
-                    > .pcoded-mtext {
+                    >.pcoded-mtext {
                         position: relative;
                         top: 0;
                         margin-right: 5px;
@@ -1240,7 +1257,7 @@
                 }
 
                 &:last-child {
-                    > a {
+                    >a {
                         margin-right: 70px;
                     }
                 }
@@ -1256,10 +1273,11 @@
                 }
 
                 &.pcoded-hasmenu {
-                    a.active{
+                    a.active {
                         color: $primary-color;
                         background: transparent;
                     }
+
                     &.active,
                     &.pcoded-trigger {
                         &:before {
@@ -1279,7 +1297,7 @@
                             transform: scaleX(1.2);
                         }
 
-                        > .pcoded-submenu {
+                        >.pcoded-submenu {
                             margin-top: 30px;
                         }
                     }
@@ -1289,7 +1307,7 @@
                 &.pcoded-trigger {
                     &:after {
                         content: "";
-                        background-color: #1dc4e9;
+                        background-color: $sonatel-color;
                         z-index: 1027;
                         position: absolute;
                         left: 19px;
@@ -1301,7 +1319,7 @@
                 }
 
                 &.pcoded-hasmenu.edge {
-                    > .pcoded-submenu {
+                    >.pcoded-submenu {
                         left: auto;
                         right: 0;
                     }
@@ -1341,10 +1359,11 @@
                     }
 
                     li {
+
                         &.active,
                         &.pcoded-trigger,
                         &:hover {
-                            > a {
+                            >a {
                                 color: $primary-color;
                             }
                         }
@@ -1404,7 +1423,7 @@
                 }
 
                 &.pcoded-trigger {
-                    > .pcoded-submenu {
+                    >.pcoded-submenu {
                         opacity: 1;
                         visibility: visible;
                         transform: rotateX(0deg);
@@ -1465,7 +1484,8 @@
                         display: inline-block;
                     }
                 }
-                color: rgba(256,256,256,0.8);
+
+                color: rgba(256, 256, 256, 0.8);
 
                 .dropdown-menu {
                     color: $theme-font-color;
@@ -1474,8 +1494,8 @@
                         color: $theme-font-color;
                     }
 
-                    > li {
-                        > a {
+                    >li {
+                        >a {
                             color: $theme-font-color;
                         }
 
@@ -1483,18 +1503,19 @@
                         &:active,
                         &:focus,
                         &:hover {
-                            background: transparentize($primary-color,0.9);
+                            background: transparentize($primary-color, 0.9);
 
-                            > a {
+                            >a {
                                 background: transparent;
                             }
                         }
                     }
                 }
+
                 // .input-group .input-group-text,
                 a,
                 dropdown-toggle {
-                    color: rgba(256,256,256,0.8);
+                    color: rgba(256, 256, 256, 0.8);
 
                     &:hover {
                         color: #fff;
@@ -1525,7 +1546,7 @@
                         .noti-body {
                             li {
                                 &.notification:hover {
-                                    background: transparentize($primary-color,0.9);
+                                    background: transparentize($primary-color, 0.9);
                                 }
                             }
                         }
@@ -1557,6 +1578,7 @@
         }
     }
 }
+
 /* menu [ horizontal ] css end */
 /* main content start */
 .pcoded-content {
@@ -1576,6 +1598,7 @@
     min-height: 100vh;
     transition: all 0.3s ease-in-out;
 }
+
 /* main content end*/
 /* ==========================    Rsponsive Menu  start   ====================== */
 @media only screen and (max-width: 991px) {
@@ -1598,7 +1621,7 @@
             right: 20px;
         }
 
-        > .collapse:not(.show) {
+        >.collapse:not(.show) {
             display: flex;
             background: #fff;
             box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
@@ -1631,7 +1654,7 @@
         }
 
         .navbar-nav {
-            > li {
+            >li {
                 &:last-child {
                     padding-right: 60px;
                 }
@@ -1649,12 +1672,12 @@
             height: 100%;
         }
 
-        ~ .pcoded-header,
-        ~ .pcoded-main-container {
+        ~.pcoded-header,
+        ~.pcoded-main-container {
             margin-left: 0;
         }
 
-        ~ .pcoded-header {
+        ~.pcoded-header {
             width: 100%;
         }
 
@@ -1672,19 +1695,21 @@
         }
     }
 }
+
 @media only screen and (max-width: 575px) {
     .pcoded-header {
         .navbar-nav {
-            > li:first-child {
+            >li:first-child {
                 padding-left: 0;
             }
 
-            > li:last-child {
+            >li:last-child {
                 padding-right: 20px;
             }
         }
 
         .navbar-nav.mr-auto {
+
             // display: none;
             li {
                 display: none;
@@ -1740,6 +1765,7 @@
         margin-bottom: 15px;
     }
 }
+
 @media only screen and (max-width: 1200px) and (min-width:768px) {
     .pcoded-navbar {
         .header-logo {
@@ -1756,21 +1782,21 @@
             }
 
             .pcoded-menu-caption {
-                > label {
+                >label {
                     transition: none;
                 }
             }
 
             .pcoded-inner-navbar {
-                > li {
-                    > a {
-                        > .pcoded-mtext {
+                >li {
+                    >a {
+                        >.pcoded-mtext {
                             transition: none;
                         }
                     }
 
                     &.pcoded-hasmenu {
-                        > a {
+                        >a {
                             &:after {
                                 transition: none;
                                 transition-delay: unset;
@@ -1792,14 +1818,15 @@
         }
     }
 }
+
 /* responsive horizontal menu */
 @media only screen and (max-width: 991px) {
     .pcoded-navbar {
         &.theme-horizontal {
             margin-left: 0;
 
-            ~ .pcoded-header {
-                > .collapse:not(.show) {
+            ~.pcoded-header {
+                >.collapse:not(.show) {
                     display: inline-flex;
                     background: #fff;
                     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
@@ -1813,10 +1840,11 @@
             .pcoded-inner-navbar {
                 .pcoded-hasmenu {
                     &.pcoded-trigger {
-                        > .pcoded-submenu {
+                        >.pcoded-submenu {
+
                             .pcoded-trigger,
                             .pcoded-trigger.edge {
-                                > .pcoded-submenu {
+                                >.pcoded-submenu {
                                     position: relative;
                                     left: 0;
                                     min-width: 100%;
@@ -1835,4 +1863,5 @@
         }
     }
 }
+
 /* ==========================    Rsponsive Menu  end   ====================== */

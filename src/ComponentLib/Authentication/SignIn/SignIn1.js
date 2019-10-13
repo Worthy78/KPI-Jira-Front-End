@@ -92,7 +92,7 @@ class SignUp1 extends React.Component {
                                                 <label htmlFor="checkbox-fill-a1" className="cr"> Rester connecté</label>
                                             </div>
                                         </div>
-                                        <button className="btn btn-primary shadow-2 mb-4" type="submit">Se connecter</button>
+                                        <button className="btn btn-success shadow-2 mb-4 font-weight-bold" type="submit">Se connecter</button>
                                         <p className="mb-2 text-muted"> <a href={config.baseUrl + "/secure/ForgotLoginDetails.jspa"}>Impossible de se connecter?</a></p>
                                         <p className="mb-0 text-muted">Pas encore membre? Contacter <a href={config.baseUrl + "/secure/ContactAdministrators!default.jspa"}>L'administrateur</a></p>
                                     </form>

@@ -5,7 +5,7 @@
 }
 
 .ChartShadow {
-    filter :drop-shadow(0px 20px 8px rgba(0,0,0,0.2));
+    filter: drop-shadow(0px 20px 8px rgba(0, 0, 0, 0.2));
 }
 
 .chart-activity,
@@ -18,7 +18,7 @@
 #Statistics-sale {
     .amcharts-cursor-fill {
         filter: url(#shadow);
-        fill: rgba(256,256,256,.3);
+        fill: rgba(256, 256, 256, .3);
         stroke-width: 0;
     }
 }
@@ -27,6 +27,7 @@
 .amcharts-zoom-out-image {
     display: none;
 }
+
 /* statistics section */
 
 .card-command {
@@ -66,7 +67,7 @@
             padding: 50px 20px;
         }
 
-        > [class*=col-] {
+        >[class*=col-] {
             display: table-cell;
             float: none;
             table-layout: fixed;
@@ -82,7 +83,7 @@
 
 .rides-bar {
     i.rides-icon {
-        background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+        background: linear-gradient(-135deg, #1de9b6 0%, #1DC4E9 100%);
         border-radius: 50px;
         padding: 15px;
     }
@@ -104,7 +105,7 @@
 
 .profit-bar {
     i {
-        background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+        background: linear-gradient(-135deg, #1de9b6 0%, #1DC4E9 100%);
         border-radius: 50px;
         padding: 13px;
     }
@@ -128,6 +129,7 @@
         position: relative;
         z-index: 5;
     }
+
     @media screen and (max-width: 1199px) {
         .bg-img {
             background: none;
@@ -184,7 +186,7 @@
         }
 
         .msg {
-            background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+            background: linear-gradient(-135deg, #1de9b6 0%, #1DC4E9 100%);
             box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 
             &:after {
@@ -237,7 +239,7 @@
             float: right;
             border-radius: 50px;
             border: none;
-            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
             padding: 0;
             margin: 0;
         }
@@ -291,7 +293,7 @@
     .done-task {
         opacity: 0.7;
 
-        > div {
+        >div {
             filter: grayscale(0.8);
         }
 
@@ -340,19 +342,19 @@
             display: none;
         }
 
-        label input[type=checkbox]+.cr > .cr-icon {
+        label input[type=checkbox]+.cr>.cr-icon {
             transform: scale(3) rotateZ(-20deg);
             opacity: 0;
             transition: all 0.3s ease-in;
         }
 
-        label input[type=checkbox]:checked+.cr > .cr-icon {
+        label input[type=checkbox]:checked+.cr>.cr-icon {
             transform: scale(1) rotateZ(0deg);
             opacity: 1;
         }
 
         label input[type=checkbox]:checked+.cr {
-            background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+            background: linear-gradient(-135deg, #1de9b6 0%, #1DC4E9 100%);
             border: 0;
         }
     }
@@ -382,7 +384,7 @@
 
         .label {
             border-radius: 15px;
-            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
         }
     }
 
@@ -410,7 +412,7 @@
 
         .label {
             border-radius: 15px;
-            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
         }
     }
 }
@@ -518,7 +520,7 @@
         top: -20px;
         padding: 0;
         margin: 0;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -557,7 +559,7 @@
             width: 17px;
             height: 17px;
             z-index: 2;
-            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
         }
     }
 }
@@ -588,7 +590,7 @@
 .user-card {
     .label {
         border-radius: 15px;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -597,9 +599,10 @@
         height: 7px;
     }
 
-    .card-active > div + div {
+    .card-active>div+div {
         border-left: 1px solid $theme-border;
     }
+
     @media screen and (max-width: 767px) {
         .card-active [class*=col-]:last-child {
             border-left: 0;
@@ -618,7 +621,7 @@
     }
 
     i {
-        background: rgba(255,255,255,.2);
+        background: rgba(255, 255, 255, .2);
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -633,7 +636,7 @@
         background: rgba(255, 255, 255, 0.22);
         border-radius: 0;
         height: 7px;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -652,6 +655,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         @media screen and (max-width: 768px) {
             display: none;
         }
@@ -660,7 +664,7 @@
 
 .card-Impression {
     i {
-        background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+        background: linear-gradient(-135deg, #1de9b6 0%, #1DC4E9 100%);
         width: 52px;
         height: 52px;
         border-radius: 5px;
@@ -668,13 +672,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     }
 }
 
 .card-Revenue {
     i {
-        background: rgba(255,255,255,0.2);
+        background: rgba(255, 255, 255, 0.2);
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -694,8 +698,9 @@
         align-items: center;
         display: flex;
         border-radius: 5px;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     }
+
     @media screen and (max-width: 375px) {
         i {
             width: 80px;
@@ -743,7 +748,7 @@
         height: 6px;
     }
 
-    .card-active > div + div {
+    .card-active>div+div {
         border-left: 1px solid $theme-border;
     }
 }
@@ -762,16 +767,16 @@
         li {
             width: 10px;
             height: 10px;
-            background:#e3e3e3;
+            background: #e3e3e3;
             margin: 0 6px;
-            border-radius:50px;
+            border-radius: 50px;
         }
 
         .carousel-indicators {
             bottom: -44px;
 
             .active {
-                background:#869791;
+                background: #869791;
             }
         }
     }
@@ -843,7 +848,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -909,13 +914,14 @@
     &:hover {
         .feature-icon {
             transform: scale(1.2);
-            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
             border-radius: 0;
         }
     }
 }
 
 .card {
+
     .card-block,
     .card-body {
         code {
@@ -927,12 +933,14 @@
         }
     }
 }
+
 @media screen and (max-width: 767px) {
     .user-designer [class*=col-]:last-child {
         margin-top: 15px;
     }
-    div.dataTables_wrapper div.dataTables_filter label{
-        float:none !important;
+
+    div.dataTables_wrapper div.dataTables_filter label {
+        float: none !important;
         text-align: center;
     }
 }
@@ -943,6 +951,7 @@
         border: 1px solid #ddd;
     }
 }
+
 /* ===================== to do page ============================= */
 
 #task-container {
@@ -980,7 +989,8 @@
         transition: all ease-in 0.3s;
 
         &:before {
-            /*background: url("../../../images/complete.png") no-repeat;*/ // amit images
+            /*background: url("../../../images/complete.png") no-repeat;*/
+            // amit images
             position: absolute;
             top: 5px;
             right: 5px;
@@ -994,6 +1004,7 @@
             text-decoration: line-through;
         }
     }
+
     @media screen and (max-width:580px) {
         li {
             width: 100%;
@@ -1082,7 +1093,7 @@
 
     .note-write {
         position: relative;
-        background: -webkit-linear-gradient(top,#98dcfa 0%,#e1f5fe 5%) 0 0;
+        background: -webkit-linear-gradient(top, #98dcfa 0%, #e1f5fe 5%) 0 0;
         background-size: 100% 35px;
 
         &:before {
@@ -1109,7 +1120,7 @@
     .Note-delete {
         margin-bottom: 0;
         opacity: 0;
-        background: rgba(0,0,0,.6);
+        background: rgba(0, 0, 0, .6);
         border: none;
         position: absolute;
         right: 20px;
@@ -1129,6 +1140,7 @@
         }
     }
 }
+
 /* ===================== Gallery page ============================= */
 
 .gallery-masonry {
@@ -1136,6 +1148,7 @@
         column-count: 4;
     }
 }
+
 @media screen and (max-width: 1400px) {
     .gallery-masonry {
         .card-columns {
@@ -1143,6 +1156,7 @@
         }
     }
 }
+
 @media screen and (max-width: 992px) {
     .gallery-masonry {
         .card-columns {
@@ -1150,6 +1164,7 @@
         }
     }
 }
+
 @media screen and (max-width: 575px) {
     .gallery-masonry {
         .card-columns {
@@ -1164,6 +1179,7 @@
         color: $primary-color;
     }
 }
+
 /* ===================== Task-list page ============================= */
 
 .task-data {
@@ -1184,6 +1200,7 @@
 }
 
 .task-board-left {
+
     .task-right-header-revision,
     .task-right-header-status,
     .task-right-header-users {
@@ -1243,8 +1260,9 @@
     .navbar {
         background-color: #fff;
         border-radius: 4px;
-        box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+        box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
         padding: 0.5rem 1rem;
+
         @media screen and (max-width:557px) {
             .f-text {
                 display: block;
@@ -1311,6 +1329,7 @@
         box-shadow: none;
     }
 }
+
 /* ===================== Invoice page ============================= */
 
 .invoice-contact {
@@ -1391,6 +1410,7 @@
         display: inline-block;
     }
 }
+
 /*  ================ new css =================== */
 
 .datepicker-dropdown {
@@ -1408,9 +1428,18 @@
     border-top: 6px solid #3f4d67;
 }
 
-.datepicker table tr td.active.active,.datepicker table tr td.active.highlighted.active,.datepicker table tr td.active.highlighted:active,
-.datepicker table tr td.active:active,.datepicker table tr td.highlighted,
-.datepicker table tr td.today , .datepicker table tr td.day:hover, .datepicker table tr td.focused,.datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover{
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.highlighted.active,
+.datepicker table tr td.active.highlighted:active,
+.datepicker table tr td.active:active,
+.datepicker table tr td.highlighted,
+.datepicker table tr td.today,
+.datepicker table tr td.day:hover,
+.datepicker table tr td.focused,
+.datepicker .datepicker-switch:hover,
+.datepicker .next:hover,
+.datepicker .prev:hover,
+.datepicker tfoot tr th:hover {
     background-color: #333f54;
     color: #fff;
 }
@@ -1430,22 +1459,25 @@
 .owl-carousel {
     .owl-nav {
         button {
+
             &.owl-next,
             &.owl-prev {
                 padding: 3px 9px !important;
                 background-color: $primary-color;
-                color:#fff;
+                color: #fff;
             }
         }
     }
-    button:focus{
-        outline:none;
-        color:#fff;
+
+    button:focus {
+        outline: none;
+        color: #fff;
     }
 }
-.owl-theme .owl-nav [class*=owl-]:hover{
+
+.owl-theme .owl-nav [class*=owl-]:hover {
     background-color: $primary-color;
-    color:#fff;
+    color: #fff;
 }
 
 .counter b {
@@ -1466,6 +1498,7 @@
         padding: 10px 0;
         border-bottom: 1px solid #f1f1f1;
         cursor: pointer;
+
         @media screen and (min-width: 992px) {
             display: none;
         }
@@ -1487,16 +1520,20 @@
     h2 {
         font-size: 28px;
     }
+
     @media screen and (max-width:768px) {
-        .fc .fc-toolbar>*>*{
-            float:none;
+        .fc .fc-toolbar>*>* {
+            float: none;
         }
-        .fc-toolbar .fc-left,.fc-toolbar .fc-right,.fc-toolbar .fc-center{
-            float:none;
-            display:flex;
+
+        .fc-toolbar .fc-left,
+        .fc-toolbar .fc-right,
+        .fc-toolbar .fc-center {
+            float: none;
+            display: flex;
             justify-content: center;
             align-items: center;
-            width:100%;
+            width: 100%;
             text-align: center;
             margin: 0 auto;
             margin-bottom: 10px;
@@ -1508,34 +1545,41 @@
     font-weight: 600;
 }
 
-div.code-toolbar{
-    > .toolbar a, > .toolbar button, >.toolbar span{
+div.code-toolbar {
+
+    >.toolbar a,
+    >.toolbar button,
+    >.toolbar span {
         padding: 3px 0.9em !important;
-        background:#04a9f5 !important;
-        color:#fff !important;
-        box-shadow:none !important;
+        background: $sonatel-color !important;
+        color: #fff !important;
+        box-shadow: none !important;
     }
 }
 
-pre[class*=language-]:after, pre[class*=language-]:before{
+pre[class*=language-]:after,
+pre[class*=language-]:before {
     display: none;
 }
-#chat-scroll{
+
+#chat-scroll {
     height: 280px;
     position: relative;
 }
-.msg-user-list.datta-scroll{
-    height:calc(100vh - 300px);
+
+.msg-user-list.datta-scroll {
+    height: calc(100vh - 300px);
     position: relative;
 }
-.msg-user-chat.datta-scroll{
-    height:calc(100vh - 330px);
+
+.msg-user-chat.datta-scroll {
+    height: calc(100vh - 330px);
     position: relative;
 }
 
 @media screen and (max-width: 1199px) {
-    .note-card .note-box-aside{
-        border:none !important;
+    .note-card .note-box-aside {
+        border: none !important;
     }
 }
 
@@ -1556,6 +1600,7 @@ pre[class*=language-]:after, pre[class*=language-]:before{
         }
     }
 }
+
 @media screen and (max-width: 992px) {
     .tour-mobile .error-block {
         display: block;
@@ -1565,6 +1610,7 @@ pre[class*=language-]:after, pre[class*=language-]:before{
         display: none;
     }
 }
+
 @media screen and (min-width: 768px) {
     .horizontal-mobile {
         display: none;

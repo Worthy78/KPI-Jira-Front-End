@@ -48,7 +48,7 @@ class Breadcrumb extends Component {
     render() {
         let main, item;
         let breadcrumb = '';
-        let title = 'Welcome';
+        let title = 'Bienvenue';
         if (this.state.main && this.state.main.type === 'collapse') {
             main = (
                 <li className="breadcrumb-item">
@@ -90,7 +90,7 @@ class Breadcrumb extends Component {
 
         }
 
-        document.title = title + ' | JIRA DASHBOARD KPI';
+        document.title = title + ' | JIRA KPI DASHBOARD';
 
         return (
             <Aux>
