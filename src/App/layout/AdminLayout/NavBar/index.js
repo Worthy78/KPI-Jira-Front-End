@@ -28,7 +28,9 @@ class NavBar extends Component {
                             <div>
                                 <img src={require("../../../../assets/images/jira-logo-scaled.png")} className="img-fluid" alt="" />
                             </div>
-                            <span className="b-title">JIRA KPI</span>
+                            <span className="b-title font-weight-bold pl-1">JIRA KPI
+                            <i className="fa fa-tachometer text-white fa-1-5x pl-2" />
+                            </span>
                         </a>
                     </div>
                     <a className="mobile-menu" id="mobile-header" href={DEMO.BLANK_LINK}><i className="feather icon-more-horizontal" /></a>
