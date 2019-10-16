@@ -1,8 +1,8 @@
 import axios from "axios";
 // import { authErrorMess, createMessage } from "./messages";
 
-import * as actionTypes from "./actions";
-import config from "../config";
+import * as actionTypes from "../actions";
+import config from "../../config";
 
 //Auth starting (login/register)
 //Auth Loading

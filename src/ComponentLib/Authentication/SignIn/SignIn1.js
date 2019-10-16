@@ -6,7 +6,7 @@ import Aux from "../../../hoc/_Aux";
 //import Breadcrumb from "../../../App/layout/AdminLayout/Breadcrumb";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { login } from '../../../store/authentication';
+import { login } from '../../../store/actions/authentication';
 import config from '../../../config';
 import Loading from '../../../App/layout/Loader/Loading';
 

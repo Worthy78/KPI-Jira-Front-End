@@ -28,42 +28,6 @@ export default {
                     icon: 'feather icon-briefcase',
                     children: [
                         {
-                            id: 'big-data',
-                            title: 'Big Data',
-                            type: 'item',
-                            url: '/bigData'
-                        },
-                        {
-                            id: 'centre-d_expertise',
-                            title: "Centre D'expertise",
-                            type: 'item',
-                            url: '/expertise'
-                        },
-                        {
-                            id: 'dsi-dif-rad',
-                            title: 'DSI / DIF / RAD',
-                            type: 'item',
-                            url: '/rad'
-                        },
-                        {
-                            id: 'dsi-ins',
-                            title: 'DSI/INS',
-                            type: 'item',
-                            url: '/dsi-ins'
-                        },
-                        {
-                            id: 'industrialisaion-it',
-                            title: 'Industrialisaion IT',
-                            type: 'item',
-                            url: '/industrialisaion'
-                        },
-                        {
-                            id: 'orange-money',
-                            title: 'Orange Money',
-                            type: 'item',
-                            url: '/orange'
-                        },
-                        {
                             id: 'uncategorized',
                             title: 'Pas de catégorie',
                             type: 'item',

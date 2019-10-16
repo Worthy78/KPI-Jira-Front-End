@@ -11,3 +11,11 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_ERROR = "LOGOUT_ERROR";
+
+//
+export const CATEGORY_LOADING = "CATEGORY_LOADING";
+export const CATEGORY_LOADED = "CATEGORY_LOADED";
+
+// ALERTS
+export const GET_ERRORS = "GET_ERRORS";
+export const CREATE_MESSAGE = "CREATE_MESSAGE";

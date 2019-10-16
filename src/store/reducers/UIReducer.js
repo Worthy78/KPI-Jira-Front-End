@@ -1,6 +1,6 @@
-import * as actionTypes from './actions';
-import config from './../config';
-import updateObject from '../App/utilitity';
+import * as actionTypes from '../actions';
+import config from '../../config';
+import updateObject from '../../App/utilitity';
 
 const initialState = {
     isOpen: [], //for active default menu

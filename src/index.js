@@ -8,18 +8,29 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App/index';
 import * as serviceWorker from './serviceWorker';
-import reducer from './store/reducer';
 import config from './config';
+import { Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+import rootReducer from './store/reducers/rootReducer'
 
-const middleware = thunk;
-const Enhencers = composeWithDevTools(applyMiddleware(middleware));
-const store = createStore(reducer, Enhencers);
+const store = createStore(rootReducer,
+    composeWithDevTools(
+        applyMiddleware(thunk)
+    )
+);
+
+// Alert Options
+const alertOptions = {
+    position: "top center",
+};
 
 const app = (
     <Provider store={store}>
         <BrowserRouter basename={config.basename}>
-            {/* basename="/datta-able" */}
-            <App />
+            <AlertProvider template={AlertTemplate} {...alertOptions}>
+                {/* basename="/datta-able" */}
+                <App />
+            </AlertProvider>
         </BrowserRouter>
     </Provider>
 );
