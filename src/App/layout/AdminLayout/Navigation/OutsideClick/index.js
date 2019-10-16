@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 
 import * as actionTypes from "../../../../../store/actions";
@@ -42,14 +42,14 @@ class OutsideClick extends Component {
 
 const mapStateToProps = state => {
     return {
-        collapseMenu: state.collapseMenu
+        collapseMenu: state.ui.collapseMenu
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onToggleNavigation: () => dispatch({type: actionTypes.COLLAPSE_MENU}),
+        onToggleNavigation: () => dispatch({ type: actionTypes.COLLAPSE_MENU }),
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (windowSize(OutsideClick));
+export default connect(mapStateToProps, mapDispatchToProps)(windowSize(OutsideClick));

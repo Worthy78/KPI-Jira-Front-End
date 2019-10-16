@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import windowSize from 'react-window-size';
 
@@ -9,6 +9,7 @@ import OutsideClick from './OutsideClick';
 import Aux from './../../../../hoc/_Aux'
 import * as actionTypes from './../../../../store/actions';
 import navigation from '../../../../menu-items';
+import { getCategories } from '../../../../store/actions/projectActions';
 
 class Navigation extends Component {
 
@@ -23,6 +24,7 @@ class Navigation extends Component {
     componentDidMount() {
         this.resize();
         window.addEventListener('resize', this.resize)
+        this.props.getCategories();
     }
 
     componentWillUnmount() {
@@ -30,6 +32,7 @@ class Navigation extends Component {
     }
 
     render() {
+        // DESIGN
         let navClass = [
             'pcoded-navbar',
         ];
@@ -42,8 +45,8 @@ class Navigation extends Component {
                 this.props.layoutType,
                 this.props.navBackColor,
                 this.props.navBrandColor,
-                'drp-icon-'+this.props.navDropdownIcon,
-                'menu-item-icon-'+this.props.navListIcon,
+                'drp-icon-' + this.props.navDropdownIcon,
+                'menu-item-icon-' + this.props.navListIcon,
                 this.props.navActiveListColor,
                 this.props.navListTitleColor,
             ];
@@ -105,6 +108,18 @@ class Navigation extends Component {
             document.body.classList.remove('box-layout');
         }
 
+        // B.Logic
+        const plateaux = navigation.items[1].children[0].children
+        if (plateaux.length === 1 && this.props.categories !== undefined)
+            this.props.categories.forEach(category => {
+                let categoryNav = { type: 'item' }
+                categoryNav.id = category.name.replace(/\s+/g, '-').toLowerCase()
+                categoryNav.title = category.name
+                categoryNav.url = "/projets/category/" + category.id
+                // adding the category to the navigation object
+                navigation.items[1].children[0].children.push(categoryNav)
+            })
+
         let navContent = (
             <div className="navbar-wrapper">
                 <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
@@ -134,31 +149,35 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
     return {
-        layout: state.layout,
-        preLayout: state.preLayout,
-        collapseMenu: state.collapseMenu,
-        layoutType: state.layoutType,
-        navBackColor: state.navBackColor,
-        navBackImage: state.navBackImage,
-        navIconColor: state.navIconColor,
-        navBrandColor: state.navBrandColor,
-        layout6Background: state.layout6Background,
-        layout6BackSize: state.layout6BackSize,
-        rtlLayout: state.rtlLayout,
-        navFixedLayout: state.navFixedLayout,
-        boxLayout: state.boxLayout,
-        navDropdownIcon: state.navDropdownIcon,
-        navListIcon: state.navListIcon,
-        navActiveListColor: state.navActiveListColor,
-        navListTitleColor: state.navListTitleColor,
-        navListTitleHide: state.navListTitleHide
+        // UI
+        layout: state.ui.layout,
+        preLayout: state.ui.preLayout,
+        collapseMenu: state.ui.collapseMenu,
+        layoutType: state.ui.layoutType,
+        navBackColor: state.ui.navBackColor,
+        navBackImage: state.ui.navBackImage,
+        navIconColor: state.ui.navIconColor,
+        navBrandColor: state.ui.navBrandColor,
+        layout6Background: state.ui.layout6Background,
+        layout6BackSize: state.ui.layout6BackSize,
+        rtlLayout: state.ui.rtlLayout,
+        navFixedLayout: state.ui.navFixedLayout,
+        boxLayout: state.ui.boxLayout,
+        navDropdownIcon: state.ui.navDropdownIcon,
+        navListIcon: state.ui.navListIcon,
+        navActiveListColor: state.ui.navActiveListColor,
+        navListTitleColor: state.ui.navListTitleColor,
+        navListTitleHide: state.ui.navListTitleHide,
+        // B . L
+        categories: state.project.category.categories
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onToggleNavigation: () => dispatch({type: actionTypes.COLLAPSE_MENU}),
-        onChangeLayout: (layout) => dispatch({type: actionTypes.CHANGE_LAYOUT, layout: layout}),
+        getCategories: () => dispatch(getCategories),
+        onToggleNavigation: () => dispatch({ type: actionTypes.COLLAPSE_MENU }),
+        onChangeLayout: (layout) => dispatch({ type: actionTypes.CHANGE_LAYOUT, layout: layout }),
     }
 };
 

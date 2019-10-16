@@ -8,8 +8,6 @@ import Aux from "../../../../../hoc/_Aux";
 import NavGroup from './NavGroup';
 import DEMO from "../../../../../store/constant";
 import * as actionTypes from "../../../../../store/actions";
-import Axios from 'axios';
-import config from '../../../../../config';
 import Loading from '../../../Loader/Loading';
 
 class NavContent extends Component {
@@ -17,8 +15,6 @@ class NavContent extends Component {
         scrollWidth: 0,
         prevDisable: true,
         nextDisable: false,
-        category: null,
-        loading: true
     };
 
     scrollPrevHandler = () => {
@@ -45,40 +41,11 @@ class NavContent extends Component {
         }
     };
 
-    componentDidMount() {
-        // Headers
-        const headers = {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        };
-
-        Axios
-            .get(config.baseUrl + "/category", headers)
-            .then(res => this.setState({ category: res.data, loading: false }))
-            .catch(error => {
-                this.setState({ loading: false })
-                console.log('error', error)
-            })
-    }
-
     render() {
-        console.log('this.state', typeof (this.props.navigation))
-        if (this.state.loading)
-            return <Loading />
-        else {
-            // let a =this.props.navigation[1].children
-            console.log('this.state.category', this.state.category)
-            this.state.category.forEach(category => {
-                let categoryNav = { type: 'item' }
-                categoryNav.id = category.id
-                categoryNav.title = category.title
-                categoryNav.url = "/projets/category/" + category.id
-                // adding the category to the navigation object
-                this.props.navigation.children.push(categoryNav)
 
-                console.log('categoryNav', categoryNav)
-            })
+        if (this.props.categoryIsLoading)
+            return <Loading fontSize={45} color={"orange"} />
+        else {
             const navItems = this.props.navigation.map(item => {
                 switch (item.type) {
                     case 'group':
@@ -134,8 +101,9 @@ class NavContent extends Component {
 
 const mapStateToProps = state => {
     return {
-        layout: state.layout,
-        collapseMenu: state.collapseMenu,
+        layout: state.ui.layout,
+        collapseMenu: state.ui.collapseMenu,
+        categoryIsLoading: state.project.category.isloading
     }
 };
 

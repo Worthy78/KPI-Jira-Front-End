@@ -2,10 +2,10 @@ import { CREATE_MESSAGE, GET_ERRORS } from "../actions";
 import updateObject from "../../App/utilitity";
 
 const initialState = {
-  message: null,
+  message: undefined,
   error: {
     msg: {},
-    code: null
+    code: undefined
   }
 };
 

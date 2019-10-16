@@ -15,3 +15,9 @@ export const authErrorMess = (error) => {
     payload: error
   };
 };
+export const errorMess = (error) => {
+  return {
+    type: GET_ERRORS,
+    payload: error
+  };
+};

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Aux from "../../../../../../hoc/_Aux";
@@ -20,7 +20,7 @@ class NavCollapse extends Component {
     }
 
     render() {
-        const {isOpen, isTrigger} = this.props;
+        const { isOpen, isTrigger } = this.props;
 
         let navItems = '';
         if (this.props.collapse.children) {
@@ -31,7 +31,7 @@ class NavCollapse extends Component {
                     case 'collapse':
                         return <LoopNavCollapse key={item.id} collapse={item} type="sub" />;
                     case 'item':
-                        return <NavItem layout={this.props.layout} key={item.id} item={item}/>;
+                        return <NavItem layout={this.props.layout} key={item.id} item={item} />;
                     default:
                         return false;
                 }
@@ -104,16 +104,16 @@ class NavCollapse extends Component {
 
 const mapStateToProps = state => {
     return {
-        layout: state.layout,
-        isOpen: state.isOpen,
-        isTrigger: state.isTrigger
+        layout: state.ui.layout,
+        isOpen: state.ui.isOpen,
+        isTrigger: state.ui.isTrigger
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCollapseToggle: (id, type) => dispatch({type: actionTypes.COLLAPSE_TOGGLE, menu: {id: id, type: type}}),
-        onNavCollapseLeave: (id, type) => dispatch({type: actionTypes.NAV_COLLAPSE_LEAVE, menu: {id: id, type: type}})
+        onCollapseToggle: (id, type) => dispatch({ type: actionTypes.COLLAPSE_TOGGLE, menu: { id: id, type: type } }),
+        onNavCollapseLeave: (id, type) => dispatch({ type: actionTypes.NAV_COLLAPSE_LEAVE, menu: { id: id, type: type } })
     }
 };
 

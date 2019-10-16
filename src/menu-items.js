@@ -35,13 +35,13 @@ export default {
                         }
                     ]
                 },
-                {
-                    id: 'projects',
-                    title: 'Tout les projets',
-                    type: 'item',
-                    icon: 'feather icon-package',
-                    url: '/projets'
-                }
+                // {
+                //     id: 'projects',
+                //     title: 'Tout les projets',
+                //     type: 'item',
+                //     icon: 'feather icon-package',
+                //     url: '/projets'
+                // }
             ]
         },
         {

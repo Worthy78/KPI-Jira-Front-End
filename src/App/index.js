@@ -7,6 +7,7 @@ import '../../node_modules/font-awesome/scss/font-awesome.scss';
 import Loader from './layout/Loader'
 import Aux from "../hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
+import Alerts from './layout/Alerts/Alerts';
 
 const Signin = React.lazy(() => import('../ComponentLib/Authentication/SignIn/SignIn1'));
 
@@ -21,6 +22,7 @@ class App extends Component {
             <Aux>
                 <ScrollToTop>
                     <Suspense fallback={<Loader />}>
+                        <Alerts />
                         <Switch>
                             {/* //auth/signin-1 */}
                             <Route path="/auth/signin" exact={true} name='connexion' component={Signin} />

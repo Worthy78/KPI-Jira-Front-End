@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Dropdown} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Dropdown } from 'react-bootstrap';
 import windowSize from 'react-window-size';
 
 import NavSearch from './NavSearch';
@@ -42,7 +42,7 @@ class NavLeft extends Component {
                             </ul>
                         </Dropdown>
                     </li>
-                    <li className="nav-item"><NavSearch/></li>
+                    <li className="nav-item"><NavSearch /></li>
                 </ul>
             </Aux>
         );
@@ -51,14 +51,14 @@ class NavLeft extends Component {
 
 const mapStateToProps = state => {
     return {
-        isFullScreen: state.isFullScreen,
-        rtlLayout: state.rtlLayout
+        isFullScreen: state.ui.isFullScreen,
+        rtlLayout: state.ui.rtlLayout
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFullScreen: () => dispatch({type: actionTypes.FULL_SCREEN}),
+        onFullScreen: () => dispatch({ type: actionTypes.FULL_SCREEN }),
     }
 };
 
