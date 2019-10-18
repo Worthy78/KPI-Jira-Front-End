@@ -14,7 +14,6 @@ class Alerts extends Component {
         const { error, message } = this.props.messages;
         const prevMess = prevProps.messages.message;
         const prevError = prevProps.messages.error;
-
         if (message !== prevMess) {
             alert.success(message, {
                 timeout: 5000,
