@@ -11,7 +11,7 @@ import Loader from "../Loader";
 import routes from "../../../routes";
 import Aux from "../../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
-
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import './app.scss';
 import './myApp.css';
 
@@ -23,7 +23,7 @@ class AdminLayout extends Component {
         }
     };
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.windowWidth > 992 && this.props.windowWidth <= 1024 && this.props.layout !== 'horizontal') {
             this.props.onComponentWillMount();
         }
@@ -59,27 +59,29 @@ class AdminLayout extends Component {
         return (
             <Aux>
                 <Fullscreen enabled={this.props.isFullScreen}>
-                    <Navigation />
-                    <NavBar />
-                    <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
-                        <div className="pcoded-wrapper">
-                            <div className="pcoded-content">
-                                <div className="pcoded-inner-content">
-                                    <Breadcrumb />
-                                    <div className="main-body">
-                                        <div className="page-wrapper">
-                                            <Suspense fallback={<Loader />}>
-                                                <Switch>
-                                                    {menu}
-                                                    <Redirect from="/" to={this.props.defaultPath} />
-                                                </Switch>
-                                            </Suspense>
+                    <PerfectScrollbar>
+                        <Navigation />
+                        <NavBar />
+                        <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
+                            <div className="pcoded-wrapper">
+                                <div className="pcoded-content">
+                                    <div className="pcoded-inner-content">
+                                        <Breadcrumb />
+                                        <div className="main-body">
+                                            <div className="page-wrapper">
+                                                <Suspense fallback={<Loader />}>
+                                                    <Switch>
+                                                        {menu}
+                                                        <Redirect from="/" to={this.props.defaultPath} />
+                                                    </Switch>
+                                                </Suspense>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </PerfectScrollbar>
                 </Fullscreen>
             </Aux>
         );

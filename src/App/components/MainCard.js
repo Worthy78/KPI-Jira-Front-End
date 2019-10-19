@@ -40,19 +40,19 @@ class MainCard extends Component {
                         <Dropdown.Menu as='ul' className="list-unstyled card-option">
                             <Dropdown.Item as='li' className="dropdown-item" onClick={() => { this.setState(prevState => { return { fullCard: !prevState.fullCard } }) }}>
                                 <i className={this.state.fullCard ? 'feather icon-minimize' : 'feather icon-maximize'} />
-                                <a href={DEMO.BLANK_LINK}> {this.state.fullCard ? 'Restore' : 'Maximize'} </a>
+                                <a href={DEMO.BLANK_LINK}> {this.state.fullCard ? 'Restorer' : 'Agrandir'} </a>
                             </Dropdown.Item>
                             <Dropdown.Item as='li' className="dropdown-item" onClick={() => { this.setState(prevState => { return { collapseCard: !prevState.collapseCard } }) }}>
                                 <i className={this.state.collapseCard ? 'feather icon-plus' : 'feather icon-minus'} />
-                                <a href={DEMO.BLANK_LINK}> {this.state.collapseCard ? 'Expand' : 'Collapse'} </a>
+                                <a href={DEMO.BLANK_LINK}> {this.state.collapseCard ? 'Etendre' : 'Réduire'} </a>
                             </Dropdown.Item>
                             <Dropdown.Item as='li' className="dropdown-item" onClick={this.cardReloadHandler}>
                                 <i className='feather icon-refresh-cw' />
-                                <a href={DEMO.BLANK_LINK}> Reload </a>
+                                <a href={DEMO.BLANK_LINK}> Rafraichir </a>
                             </Dropdown.Item>
                             <Dropdown.Item as='li' className="dropdown-item" onClick={this.cardRemoveHandler}>
                                 <i className='feather icon-trash' />
-                                <a href={DEMO.BLANK_LINK}> Remove </a>
+                                <a href={DEMO.BLANK_LINK}> Supprimer </a>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

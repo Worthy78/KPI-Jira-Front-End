@@ -31,7 +31,7 @@ export default {
                             id: 'uncategorized',
                             title: 'Pas de catégorie',
                             type: 'item',
-                            url: '/projets/category/0'
+                            url: '/projets/uncategorized/'
                         }
                     ]
                 },

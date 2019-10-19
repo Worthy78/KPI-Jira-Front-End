@@ -42,6 +42,7 @@ const routes = [
     // My routes
     { path: '/projets', exact: true, name: 'Projets', component: ProjectOverview },
     { path: '/projets/category/:id', exact: true, name: 'Projets', component: ProjectOverview },
+    { path: '/projets/uncategorized/', exact: true, name: 'Projets', component: ProjectOverview },
 ];
 
 export default routes;
