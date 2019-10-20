@@ -7,31 +7,62 @@ import Axios from 'axios';
 import config from '../../config';
 import { tokenConfig } from '../../App/utilitity';
 import Board from '../../App/components/Board';
-
+import { Pagination } from 'antd';
 
 class Projects extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             // projects: undefined,
+            pagination: {
+                defaultPageSize: 5,
+                pageSizeOptions: ['5', '10', '15'],
+                showSizeChanger: true,
+            },
         }
     }
 
-    fetchProjects = () => {
+    fetchProjects = (params = undefined) => {
+        let query = ''
+        if (params)
+            query += `?page=${params.page}&size=${params.pageSize}`
+
+
         if (this.props.match.params.id)
             Axios
-                .get(config.baseUrl + "/project/category/" + this.props.match.params.id, tokenConfig)
-                .then(res => this.setState({ projects: res.data }))
+                .get(config.baseUrl + "/project/category/" + this.props.match.params.id + query, tokenConfig())
+                .then(res => this.setState({
+                    projects: res.data.content,
+                    pagination: {
+                        ...this.state.pagination,
+                        // Read total count from server
+                        total: res.data.totalElements
+                    }
+                }))
                 .catch(err => {
                     console.error('err', err)
                 });
         else
             Axios
-                .get(config.baseUrl + "/project/category/autres", tokenConfig)
-                .then(res => this.setState({ projects: res.data }))
+                .get(config.baseUrl + "/project/category/autres" + query, tokenConfig())
+                .then(res => this.setState({
+                    projects: res.data.content,
+                    pagination: {
+                        ...this.state.pagination,
+                        total: res.data.totalElements
+                    }
+                })
+                )
                 .catch(err => {
                     console.error('err', err)
                 });
+    }
+    onPaginationChange = (page, pageSize) => {
+        this.fetchProjects({
+            ...this.state.pagination,
+            page,
+            pageSize
+        })
     }
     componentDidMount() {
         this.fetchProjects()
@@ -58,6 +89,7 @@ class Projects extends React.Component {
         else if (projects)
             return (
                 <Aux>
+                    <Pagination size="small" className=" bg-light border py-1 text-center mb-2" onChange={this.onPaginationChange} {...this.state.pagination} />
                     {showProjects(projects)}
                 </Aux>
             );
@@ -75,7 +107,6 @@ const showProjects = (projects) => projects.map(project =>
                 <Board projectId={project.id} />
             </MainCard>
         </Col>
-
     </Row>)
 export default Projects;
 

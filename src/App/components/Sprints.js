@@ -20,7 +20,7 @@ class Sprints extends Component {
         loading: false,
     };
     handleTableChange = (pagination, filters, sorter) => {
-        console.log('pagination', pagination)
+        //console.log('pagination', pagination)
         const pager = { ...this.state.pagination };
         pager.current = pagination.current;
         this.setState({
@@ -74,6 +74,13 @@ class Sprints extends Component {
     }
     componentDidMount() {
         this.fetch();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.boardId !== prevProps.boardId) {
+            this.fetch()
+        }
+
     }
     render() {
         return (

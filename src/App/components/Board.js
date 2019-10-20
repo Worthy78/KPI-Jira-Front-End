@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Row, Dropdown, DropdownButton, Button } from 'react-bootstrap';
+import { Row, DropdownButton, Button } from 'react-bootstrap';
 import Axios from 'axios';
 import config from '../../config';
 import { tokenConfig } from '../utilitity';
 import Sprints from './Sprints';
+import { Select } from 'antd';
 
 
 export class Board extends Component {
@@ -30,19 +31,15 @@ export class Board extends Component {
         //console.log('this.state.Boards', this.state.Boards)
     }
 
-    onChooseBoard = (e) => {
-
-        console.log(e.currentTarget.textContent)
-        console.log(e.altKey)
-        console.log(e.metaKey)
+    onChooseBoard = (key) => {
+        this.setState({ selectedBoard: key })
+        //console.log('key', key)
     }
 
     render() {
         const boards = this.state.boards
-
         return (
             <div>
-
                 {
                     boards ?
                         (
@@ -53,7 +50,7 @@ export class Board extends Component {
                                 <Row>
                                     {
                                         boards.length !== 0 ?
-                                            <Sprints boardId={boards[0].id} />
+                                            <Sprints boardId={this.state.selectedBoard ? this.state.selectedBoard : boards[0].id} />
                                             : null
                                     }
                                 </Row>
@@ -66,8 +63,6 @@ export class Board extends Component {
                             className="ml-2"
                         />
                 }
-
-
             </div>
         )
     }
@@ -81,89 +76,22 @@ const ShowDropDown = ({ boards, chooseBoard }) => {
         return <Button variant={"outline-danger"} className="ml-2">  Tableaux Introuvable ou Inexistants</Button>
     else
         return (
-            <DropdownButton
-                title={"Selectionner un Tableau"}
-                variant={"dark"}
-                className="ml-2"
-            >
+            // <DropdownButton
+            //     title={"Selectionner un Tableau"}
+            //     variant={"dark"}
+            //     className="ml-2"
+            // >
+            <Select style={{ width: 300 }} defaultValue={boards[0].id} onChange={chooseBoard}>
                 {
                     boards.map(board =>
-                        <Dropdown.Item eventKey={board.id} key={board.id} onClick={(e) => chooseBoard(e)}>
-                            <input type="hidden" id={board.id} value={board.id} ></input>
-                            {board.name} scrum
-                        </Dropdown.Item>)
+                        // <Dropdown.Item eventKey={board.id} key={board.id} id={board.id} onClick={(e) => chooseBoard(e)}>
+                        //     {board.name} scrum
+                        // </Dropdown.Item>
+                        <Select.Option key={board.id} value={board.id} >{board.name} scrum</Select.Option>
+                    )
                 }
-            </DropdownButton>
+            </Select>
+            //</DropdownButton>
         )
 }
 export default Board
-
-/* <Row>
-                   <Table responsive hover>
-                       <thead>
-                           <tr>
-                               <th>Sprint</th>
-                               <th>début</th>
-                               <th>Fin</th>
-                               <th>Statut</th>
-                               <th>Nombre de Issues</th>
-                               <th>BUG</th>
-                               <th>US Engagé</th>
-                               <th>US Réalisé</th>
-                               <th>STP Engagé</th>
-                               <th>STP Réalisé</th>
-                               <th>Complétude du sprint</th>
-                               <th>Acceptance des US</th>
-                               <th>Accélération</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           <tr>
-                               <th scope="row">1</th>
-                               <td>04/12/2018</td>
-                               <td>04/12/2018</td>
-                               <td>Clôturé</td>
-                               <td>7</td>
-                               <td>0</td>
-                               <td>18</td>
-                               <td>15</td>
-                               <td>59</td>
-                               <td>46</td>
-                               <td>78%</td>
-                               <td>83%</td>
-                               <td></td>
-                           </tr>
-                           <tr>
-                               <th scope="row">2</th>
-                               <td>04/12/2018</td>
-                               <td>04/12/2019</td>
-                               <td>en Cours</td>
-                               <td>7</td>
-                               <td>0</td>
-                               <td>18</td>
-                               <td>15</td>
-                               <td>59</td>
-                               <td>46</td>
-                               <td>78%</td>
-                               <td>83%</td>
-                               <td></td>
-                           </tr>
-                           <tr>
-                               <th scope="row">3</th>
-                               <td>04/12/2018</td>
-                               <td>04/12/2020</td>
-                               <td>Futur</td>
-                               <td>7</td>
-                               <td>0</td>
-                               <td>18</td>
-                               <td>15</td>
-                               <td>59</td>
-                               <td>46</td>
-                               <td>78%</td>
-                               <td>83%</td>
-                               <td></td>
-                           </tr>
-                       </tbody>
-                   </Table>
-               </Row>
-            */
