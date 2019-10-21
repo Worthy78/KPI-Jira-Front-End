@@ -58,12 +58,14 @@ class Projects extends React.Component {
                 });
     }
     onPaginationChange = (page, pageSize) => {
+        // console.log('page,pageSize', page, pageSize)
         this.fetchProjects({
             ...this.state.pagination,
             page,
             pageSize
         })
     }
+
     componentDidMount() {
         this.fetchProjects()
         //console.log('this.state.projects', this.state.projects)
@@ -89,7 +91,7 @@ class Projects extends React.Component {
         else if (projects)
             return (
                 <Aux>
-                    <Pagination size="small" className=" bg-light border py-1 text-center mb-2" onChange={this.onPaginationChange} {...this.state.pagination} />
+                    <Pagination size="small" className=" bg-light border py-1 text-center mb-2" onChange={this.onPaginationChange} onShowSizeChange={this.onPaginationChange} {...this.state.pagination} />
                     {showProjects(projects)}
                 </Aux>
             );

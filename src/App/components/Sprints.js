@@ -4,7 +4,6 @@ import Axios from 'axios';
 import { tokenConfig } from '../utilitity';
 import config from '../../config';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import 'antd/dist/antd.css';
 import columns from './SprintData';
 
 

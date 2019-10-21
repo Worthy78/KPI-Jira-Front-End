@@ -7,7 +7,7 @@ const antIcon = (fontSize, color) => (<Icon type="loading" style={{ fontSize, co
 function Loading(props) {
     return (
         <>
-            <Container fluid>
+            <Container fluid className={props.className}>
                 <Row className="justify-content-center">
                     <Spin indicator={antIcon(props.fontSize, props.color)} />
                 </Row>
