@@ -64,6 +64,8 @@ class Sprints extends Component {
                     data: sprintsData,
                     pagination,
                 });
+                // SEND DATA TO THE PARENT ELEMENT IN OREDER TO RENDER EXPORT TABLE TO EXCEL FUNCTIONALITY
+                this.props.dataSourceExport(sprintsData);
                 //console.log('res', res)
             })
             .catch(err => {
@@ -83,7 +85,7 @@ class Sprints extends Component {
     }
     render() {
         return (
-            <PerfectScrollbar>
+            < PerfectScrollbar >
                 <Table columns={columns}
                     //rowKey={record => record.registered}
                     dataSource={this.state.data}
@@ -97,7 +99,7 @@ class Sprints extends Component {
                 // }
                 // scroll={{ y: 240 }}
                 />
-            </PerfectScrollbar>
+            </PerfectScrollbar >
 
         );
     }

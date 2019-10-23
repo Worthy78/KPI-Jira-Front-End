@@ -106,7 +106,7 @@ const showProjects = (projects) => projects.map(project =>
     <Row key={project.id}>
         <Col>
             <MainCard title={project.name} isOption>
-                <Board projectId={project.id} />
+                <Board projectId={project.id} projectName={project.name} />
             </MainCard>
         </Col>
     </Row>)
