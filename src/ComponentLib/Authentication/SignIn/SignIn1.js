@@ -108,8 +108,8 @@ class SignUp1 extends React.Component {
 
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.isAuthenticated,
-    isLoading: state.isLoading
+    isAuthenticated: state.auth.isAuthenticated,
+    isLoading: state.auth.isLoading
 });
 
 const mapDispatchToProps = {

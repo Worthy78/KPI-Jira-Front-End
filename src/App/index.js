@@ -26,6 +26,7 @@ class App extends Component {
                         <Switch>
                             {/* //auth/signin-1 */}
                             <Route path="/auth/signin" exact={true} name='connexion' component={Signin} />
+                            
                             <Route path="/" component={AdminLayout} />
                         </Switch>
                     </Suspense>

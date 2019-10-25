@@ -53,7 +53,7 @@ export const login = (username, password, stayConnected) => dispatch => {
     }
 
     axios
-        .post(config.baseUrl + "/authenticate", body, headers)
+        .post(config.baseUrl + "/api/login", body, headers)
         .then(res => {
             if (!stayConnected) {
                 const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 24);

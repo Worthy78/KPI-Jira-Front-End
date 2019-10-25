@@ -23,7 +23,7 @@ export const tokenConfig = (getState = null) => {
 
     // If token, add to headers config
     if (token) {
-        // config.headers["Authorization"] = `Basic ${token}`;
+         config.headers["Authorization"] = `Bearer ${token}`;
     }
 
     return config;

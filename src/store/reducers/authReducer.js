@@ -5,7 +5,7 @@ const initState = {
   authError: null,
   //AUTH
   // token: localStorage.getItem("token"),
-  // isAuthenticated: null,
+  isAuthenticated: false,
   isLoading: false,
   // user: null
 }
@@ -25,17 +25,7 @@ const userLoaded = (state, action) => {
   });
 }
 
-const authSuccess = (state, action) => {
-  //  localStorage.setItem("id", action.payload.user.id); // save user's id
-  const { token, ...user } = action.payload;
-  localStorage.setItem("token", token);
-  return updateObject(state, {
-    user,
-    token,
-    isAuthenticated: true,
-    isLoading: false
-  });
-}
+
 
 const authFail = (state, action) => {
   return updateObject(state, {
@@ -46,6 +36,17 @@ const authFail = (state, action) => {
   });
 }
 */
+const authSuccess = (state, action) => {
+  //  localStorage.setItem("id", action.payload.user.id); // save user's id
+  const { accessToken, ...user } = action.payload;
+  localStorage.setItem("token", accessToken);
+  return updateObject(state, {
+    user,
+    accessToken,
+    isAuthenticated: true,
+    isLoading: false
+  });
+}
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
@@ -60,12 +61,8 @@ const authReducer = (state = initState, action) => {
 
     case actionTypes.LOGIN_SUCCESS:
       console.log('login success');
-      return updateObject(state,
-        {
-          authError: null,
-          isLoading: false
-        }
-      )
+      return authSuccess(state,action)
+
     case actionTypes.LOGOUT_SUCCESS:
       console.log('signout success');
       return state
