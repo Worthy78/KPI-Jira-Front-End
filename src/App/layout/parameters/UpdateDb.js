@@ -25,33 +25,30 @@ class UpdateDb extends React.Component {
         this.setState({
             confirmLoading: true,
         });
-        setTimeout(() => {
-            this.setState({
-                confirmLoading: false,
-            });
-        }, 2000);
-
-        // Axios
-        //     .get(`${config.baseUrl}/sprint/board`, tokenConfig())
-        //     .then(res => {
-        //         this.setState({
-        //             confirmLoading: true,
-        //         });
-        //     })
-        //     .catch(err => {
-        //         console.log('err', err)
-        //         this.setState({
-        //             confirmLoading: true,
-        //         });
+        // setTimeout(() => {
+        //     this.setState({
+        //         confirmLoading: false,
         //     });
+        // }, 2000);
+
+        Axios
+            .get(`${config.baseUrl}/update`, tokenConfig())
+            .then(res => {
+                setTimeout(() => {
+                    this.setState({
+                        confirmLoading: false,
+                    });
+                }, 4000);
+            })
+            .catch(err => {
+                console.log('err', err)
+                this.setState({
+                    confirmLoading: false,
+                });
+            });
 
     }
-    //   handleCancel = () => {
-    //     console.log('Clicked cancel button');
-    //     this.setState({
-    //       visible: false,
-    //     });
-    //   }
+
     render() {
         const { visible, confirmLoading } = this.state;
 

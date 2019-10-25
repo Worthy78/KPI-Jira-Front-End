@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card} from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 
 import Aux from "../../../hoc/_Aux/index";
 import LineChart from "./LineChart";
@@ -13,7 +13,9 @@ class Nvd3Chart extends React.Component {
     render() {
         return (
             <Aux>
-                <Row>
+                <div className="container align-self-center"> DASHBOARD EN COURS DE CONSTRUCTION...  </div>
+
+                {/* <Row>
                     <Col md={6}>
                         <Card>
                             <Card.Header>
@@ -65,6 +67,7 @@ class Nvd3Chart extends React.Component {
                         </Card>
                     </Col>
                 </Row>
+             */}
             </Aux>
         );
     }

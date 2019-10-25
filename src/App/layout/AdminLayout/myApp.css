@@ -6,3 +6,14 @@
 .fa-1-5x {
   font-size: 1.5em;
 }
+
+/***ancor**/
+.a-style {
+  color: #1890ff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  touch-action: manipulation;
+}

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 
-import NavSearch from './NavSearch';
+// import NavSearch from './NavSearch';
 import Aux from "../../../../../hoc/_Aux";
 import DEMO from "../../../../../store/constant";
 import * as actionTypes from "../../../../../store/actions";
+import ProjectSearch from './ProjectSearch';
 
 class NavLeft extends Component {
 
@@ -17,7 +18,8 @@ class NavLeft extends Component {
             <Aux>
                 <ul className="navbar-nav mr-auto">
                     <li><a href={DEMO.BLANK_LINK} className="full-screen" onClick={this.props.onFullScreen}><i className={iconFullScreen.join(' ')} /></a></li>
-                    <li className="nav-item"><NavSearch /></li>
+                    {/* <li className="nav-item"><NavSearch /></li> */}
+                    <li className="nav-item"><ProjectSearch /></li>
                 </ul>
             </Aux>
         );

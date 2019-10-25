@@ -22,7 +22,9 @@ export class Board extends Component {
     fetchBoards = () => {
         Axios
             .get(config.baseUrl + "/boards/project/" + this.props.projectId, tokenConfig())
-            .then(res => this.setState({ boards: res.data }))
+            .then(res => {
+                this.setState({ boards: res.data })
+            })
             .catch(err => {
                 console.error('err', err)
             });
@@ -77,7 +79,7 @@ export class Board extends Component {
     }
 }
 
-const ShowDropDown = ({ boards, chooseBoard }) => {
+const ShowDropDown = ({ boards, chooseBoard, collapseCard }) => {
 
     if (boards.length === 1)
         return <Button variant={"outline-dark"} className="ml-2">  {boards[0].name} scrum</Button>

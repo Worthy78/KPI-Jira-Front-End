@@ -6,9 +6,11 @@ import DEMO from "../../../../../../store/constant";
 
 class NavSearch extends Component {
     state = {
-        searchWidth: (this.props.windowWidth < 992) ? 90 : 0,
-        searchString: (this.props.windowWidth < 992) ? '90px' : '',
-        isOpen: (this.props.windowWidth < 992)
+        searchWidth: (this.props.windowWidth < 992) ? 200 : 0,
+        searchString: (this.props.windowWidth < 992) ? '200px' : '',
+        isOpen: (this.props.windowWidth < 992),
+        searchResults: [],
+        selectedProjectId: null,
     };
 
     searchOnHandler = () => {
@@ -62,6 +64,7 @@ class NavSearch extends Component {
                         </span>
                     </div>
                 </div>
+
             </Aux>
         );
     }

@@ -25,6 +25,14 @@ class MainCard extends Component {
         this.setState({ cardRemove: true });
     };
 
+    //MY FUNCION
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.collapseCard !== prevProps.collapseCard) {
+    //         this.setState({ collapseCard: this.props.collapseCard })
+    //     }
+
+    // }
+
     render() {
         let fullScreenStyle, loader, cardHeaderRight, cardHeader;
         let card = '';
