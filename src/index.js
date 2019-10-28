@@ -21,7 +21,7 @@ const store = createStore(rootReducer,
 
 // Alert Options
 const alertOptions = {
-    position: "top center",
+    position: "top center"
 };
 
 const app = (

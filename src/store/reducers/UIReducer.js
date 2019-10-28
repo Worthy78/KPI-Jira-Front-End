@@ -1,54 +1,13 @@
 import * as actionTypes from '../actions';
 import config from '../../config';
-import updateObject from '../../App/utilitity';
 
 const initialState = {
     isOpen: [], //for active default menu
     isTrigger: [], //for active default menu, set blank for horizontal
     ...config,
     isFullScreen: false, // static can't change
-    //AUTH
-    token: localStorage.getItem("token"),
-    isAuthenticated: null,
-    isLoading: false,
-    user: null
+
 };
-
-// FUNCTIOND FOR AUTH REDUCER
-const loading = (state, action) => {
-    return updateObject(state, {
-        isLoading: true
-    });
-}
-
-const userLoaded = (state, action) => {
-    return updateObject(state, {
-        isAuthenticated: true,
-        isLoading: false,
-        user: action.payload
-    });
-}
-
-const authSuccess = (state, action) => {
-    //  localStorage.setItem("id", action.payload.user.id); // save user's id
-    const { token, ...user } = action.payload;
-    localStorage.setItem("token", token);
-    return updateObject(state, {
-        user,
-        token,
-        isAuthenticated: true,
-        isLoading: false
-    });
-}
-
-const authFail = (state, action) => {
-    return updateObject(state, {
-        token: null,
-        user: null,
-        isAuthenticated: false,
-        isLoading: false
-    });
-}
 
 const reducer = (state = initialState, action) => {
     let trigger = [];
@@ -125,17 +84,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 layout: action.layout
             };
-
-        // -----------AUTH---------------//
-        case actionTypes.USER_LOADING:
-            return loading(state, action);
-        case actionTypes.USER_LOADED:
-            return userLoaded(state, action);
-        case actionTypes.LOGIN_SUCCESS:
-            return authSuccess(state, action);
-        case actionTypes.LOGIN_FAIL:
-        case actionTypes.LOGOUT_SUCCESS:
-            return authFail(state, action);
         default:
             return state;
     }

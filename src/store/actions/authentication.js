@@ -51,9 +51,9 @@ export const login = (username, password, stayConnected) => dispatch => {
         username,
         password
     }
-
+    console.log('body', body)
     axios
-        .post(config.baseUrl + "/api/login", body, headers)
+        .post(config.baseUrl + "/api/auth/signin", body, headers)
         .then(res => {
             if (!stayConnected) {
                 const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 24);
@@ -65,7 +65,7 @@ export const login = (username, password, stayConnected) => dispatch => {
 
         })
         .catch(err => {
-            console.error(err.response.data, err.response.status)
+            console.log(err)
             dispatch({
                 type: actionTypes.LOGIN_FAIL
             });

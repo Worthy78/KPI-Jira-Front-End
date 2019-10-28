@@ -19,7 +19,7 @@ class NavLeft extends Component {
                 <ul className="navbar-nav mr-auto">
                     <li><a href={DEMO.BLANK_LINK} className="full-screen" onClick={this.props.onFullScreen}><i className={iconFullScreen.join(' ')} /></a></li>
                     {/* <li className="nav-item"><NavSearch /></li> */}
-                    <li className="nav-item"><ProjectSearch /></li>
+                    <li className="nav-item"><ProjectSearch collapseMenu={this.props.collapseMenu} /></li>
                 </ul>
             </Aux>
         );
@@ -36,6 +36,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFullScreen: () => dispatch({ type: actionTypes.FULL_SCREEN }),
+        collapseMenu: () => dispatch({ type: actionTypes.COLLAPSE_MENU }),
     }
 };
 

@@ -79,8 +79,7 @@ export class Board extends Component {
     }
 }
 
-const ShowDropDown = ({ boards, chooseBoard, collapseCard }) => {
-
+const ShowDropDown = ({ boards, chooseBoard }) => {
     if (boards.length === 1)
         return <Button variant={"outline-dark"} className="ml-2">  {boards[0].name} scrum</Button>
     else if (boards.length === 0)

@@ -11,7 +11,7 @@ export const getCategories = dispatch => {
 
     dispatch({ type: actionTypes.CATEGORY_LOADING });
     Axios
-        .get(config.baseUrl + "/category", tokenConfig)
+        .get(config.baseUrl + "/category", tokenConfig())
         .then(res => {
             dispatch({ type: actionTypes.CATEGORY_LOADED, payload: res.data });
         })

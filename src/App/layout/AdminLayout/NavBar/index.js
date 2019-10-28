@@ -6,6 +6,7 @@ import NavRight from "./NavRight";
 import Aux from "../../../../hoc/_Aux";
 import DEMO from "../../../../store/constant";
 import * as actionTypes from "../../../../store/actions";
+import { logout } from '../../../../store/actions/authentication';
 
 class NavBar extends Component {
     render() {
@@ -36,7 +37,7 @@ class NavBar extends Component {
                     <a className="mobile-menu" id="mobile-header" href={DEMO.BLANK_LINK}><i className="feather icon-more-horizontal" /></a>
                     <div className="collapse navbar-collapse">
                         <NavLeft />
-                        <NavRight rtlLayout={this.props.rtlLayout} />
+                        <NavRight logout={this.props.logout} rtlLayout={this.props.rtlLayout} />
                     </div>
                 </header>
             </Aux>
@@ -56,6 +57,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onToggleNavigation: () => dispatch({ type: actionTypes.COLLAPSE_MENU }),
+        logout: () => dispatch(logout())
     }
 };
 

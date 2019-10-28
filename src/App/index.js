@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
-
+import { connect } from 'react-redux';
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
 
 import Loader from './layout/Loader'
@@ -26,8 +26,10 @@ class App extends Component {
                         <Switch>
                             {/* //auth/signin-1 */}
                             <Route path="/auth/signin" exact={true} name='connexion' component={Signin} />
-                            
-                            <Route path="/" component={AdminLayout} />
+                            {this.props.auth.isAuthenticated ?
+                                <Route path="/" component={AdminLayout} /> : null
+                            }
+                            <Redirect to="/auth/signin" />
                         </Switch>
                     </Suspense>
                 </ScrollToTop>
@@ -36,4 +38,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(state => ({ auth: state.auth }))(App);

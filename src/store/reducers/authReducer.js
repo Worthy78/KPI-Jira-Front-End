@@ -4,9 +4,9 @@ import updateObject from '../../App/utilitity';
 const initState = {
   authError: null,
   //AUTH
-  // token: localStorage.getItem("token"),
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem("token") ? true : false,
   isLoading: false,
+  token: localStorage.getItem("token"),
   // user: null
 }
 /*
@@ -25,23 +25,15 @@ const userLoaded = (state, action) => {
   });
 }
 
-
-
-const authFail = (state, action) => {
-  return updateObject(state, {
-    token: null,
-    user: null,
-    isAuthenticated: false,
-    isLoading: false
-  });
-}
 */
+
 const authSuccess = (state, action) => {
   //  localStorage.setItem("id", action.payload.user.id); // save user's id
-  const { accessToken, ...user } = action.payload;
+  console.log('action', action)
+  const { accessToken } = action.payload;
   localStorage.setItem("token", accessToken);
   return updateObject(state, {
-    user,
+    // user,
     accessToken,
     isAuthenticated: true,
     isLoading: false
@@ -61,11 +53,11 @@ const authReducer = (state = initState, action) => {
 
     case actionTypes.LOGIN_SUCCESS:
       console.log('login success');
-      return authSuccess(state,action)
+      return authSuccess(state, action)
 
     case actionTypes.LOGOUT_SUCCESS:
       console.log('signout success');
-      return state
+      return initState
 
     // // -----------AUTH---------------//
     case actionTypes.USER_LOADING:

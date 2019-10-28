@@ -38,7 +38,7 @@ class UpdateDb extends React.Component {
                     this.setState({
                         confirmLoading: false,
                     });
-                }, 4000);
+                }, 10000);
             })
             .catch(err => {
                 console.log('err', err)

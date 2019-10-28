@@ -18,12 +18,6 @@ class ProjectSearch extends Component {
         visible: false
     };
 
-    showModal = () => {
-        this.setState({
-            visible: true,
-        });
-    };
-
     handleOk = e => {
         this.setState({
             visible: false,
@@ -51,6 +45,7 @@ class ProjectSearch extends Component {
             selectedProject: option.props.project,
             visible: true
         })
+        this.props.collapseMenu()
     }
 
     handleSearch = (value) => {
@@ -107,8 +102,7 @@ const modal = (project, handleOk, handleCancel) => (
         visible={true}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={900}
-        zIndex={1500}
+        width={950}
         destroyOnClose={true}
     >
         <Board projectId={project.id} projectName={project.name} />

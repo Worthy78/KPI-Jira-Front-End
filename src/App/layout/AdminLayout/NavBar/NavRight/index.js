@@ -18,7 +18,7 @@ class NavRight extends Component {
                         <span>Pape Malick</span>
                     </li>
                     <li>
-                        <a href={DEMO.BLANK_LINK} className="dud-logout feather-16" title="Logout">
+                        <a href={DEMO.BLANK_LINK} onClick={this.props.logout} className="dud-logout feather-16" title="Logout">
                             <i className="feather icon-power text-warning  " />
                         </a>
                     </li>
