@@ -4,12 +4,12 @@ import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
 
-import Loader from './layout/Loader'
+import Loader from './components/Loader'
 import Aux from "../hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
-import Alerts from './layout/Alerts/Alerts';
+import Alerts from './components/Alerts/Alerts';
 
-const Signin = React.lazy(() => import('../ComponentLib/Authentication/SignIn/SignIn1'));
+const Signin = React.lazy(() => import('../ComponentLib/Authentication/SignIn/SignIn'));
 
 const AdminLayout = Loadable({
     loader: () => import('./layout/AdminLayout'),

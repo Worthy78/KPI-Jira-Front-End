@@ -58,11 +58,11 @@ export default {
                     icon: 'feather icon-refresh-cw'
                 },
                 {
-                    id: 'planinificate',
-                    title: 'Planification Mise à jour',
+                    id: 'account',
+                    title: 'Gestion comptes',
                     type: 'item',
-                    icon: 'feather icon-calendar',
-                    url: '/planificate'
+                    icon: 'feather icon-users',
+                    url: '/gestion-comptes'
                 }
             ]
         }

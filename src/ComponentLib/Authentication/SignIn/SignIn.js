@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from '../../../store/actions/authentication';
 import config from '../../../config';
-import Loading from '../../../App/layout/Loader/Loading';
+import Loading from '../../../App/components/Loader/Loading';
 
 
 class SignUp1 extends React.Component {

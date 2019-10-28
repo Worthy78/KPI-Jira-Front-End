@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Aux from "../../../../../hoc/_Aux";
+import Aux from "../../../../../../hoc/_Aux";
 import { Modal } from 'antd';
 import { Input, AutoComplete } from 'antd';
 import {
     InputGroup
 } from "react-bootstrap";
 import Axios from 'axios';
-import { tokenConfig } from '../../../../utilitity';
-import config from '../../../../../config';
-import Board from '../../../../components/Board';
+import { tokenConfig } from '../../../../../utilitity';
+import Board from '../../../../../components/Board';
+import config from '../../../../../../config';
 
 const { Option } = AutoComplete;
 class ProjectSearch extends Component {

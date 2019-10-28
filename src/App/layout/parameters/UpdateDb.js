@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Modal } from 'antd';
 import { Button } from 'react-bootstrap';
-import Loading from '../Loader/Loading';
+import Loading from '../../components/Loader/Loading';
 import UcFirst from '../../components/UcFirst';
 import Axios from 'axios';
 import config from '../../../config';
@@ -10,7 +10,6 @@ import { tokenConfig } from '../../utilitity';
 
 class UpdateDb extends React.Component {
     state = {
-        ModalText: 'Content of the modal',
         visible: true,
         confirmLoading: false,
     }

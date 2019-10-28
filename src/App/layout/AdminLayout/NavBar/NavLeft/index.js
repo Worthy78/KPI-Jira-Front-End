@@ -6,7 +6,7 @@ import windowSize from 'react-window-size';
 import Aux from "../../../../../hoc/_Aux";
 import DEMO from "../../../../../store/constant";
 import * as actionTypes from "../../../../../store/actions";
-import ProjectSearch from './ProjectSearch';
+import ProjectSearch from './NavSearch/ProjectSearch';
 
 class NavLeft extends Component {
 

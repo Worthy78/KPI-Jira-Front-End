@@ -8,7 +8,7 @@ import Aux from "../../../../../hoc/_Aux";
 import NavGroup from './NavGroup';
 import DEMO from "../../../../../store/constant";
 import * as actionTypes from "../../../../../store/actions";
-import Loading from '../../../Loader/Loading';
+import Loading from '../../../../components/Loader/Loading';
 
 class NavContent extends Component {
     state = {
