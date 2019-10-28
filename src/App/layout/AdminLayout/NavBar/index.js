@@ -19,7 +19,6 @@ class NavBar extends Component {
         if (this.props.collapseMenu) {
             toggleClass = [...toggleClass, 'on'];
         }
-
         return (
             <Aux>
                 <header className={headerClass.join(' ')}>
@@ -37,7 +36,7 @@ class NavBar extends Component {
                     <a className="mobile-menu" id="mobile-header" href={DEMO.BLANK_LINK}><i className="feather icon-more-horizontal" /></a>
                     <div className="collapse navbar-collapse">
                         <NavLeft />
-                        <NavRight logout={this.props.logout} rtlLayout={this.props.rtlLayout} />
+                        <NavRight isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} rtlLayout={this.props.rtlLayout} />
                     </div>
                 </header>
             </Aux>
@@ -50,7 +49,8 @@ const mapStateToProps = state => {
         rtlLayout: state.ui.rtlLayout,
         headerBackColor: state.ui.headerBackColor,
         headerFixedLayout: state.ui.headerFixedLayout,
-        collapseMenu: state.ui.collapseMenu
+        collapseMenu: state.ui.collapseMenu,
+        isAuthenticated: state.auth.isAuthenticated
     }
 };
 

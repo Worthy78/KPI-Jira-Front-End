@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 
 import Aux from "../../../../../hoc/_Aux";
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
+import DEMO from '../../../../../store/constant';
 
 
 class NavRight extends Component {
-    render() {
 
-        return (
+    render() {
+        if (this.props.isAuthenticated === undefined)
+            return "Chargement...."
+        else if (!this.props.isAuthenticated)
+            return <Redirect to="/auth/signin" />
+        else return (
             <Aux>
                 <ul className="navbar-nav ml-auto">
                     <li className={this.props.rtlLayout ? 'm-r-15' : 'm-l-15'}>
@@ -16,9 +21,9 @@ class NavRight extends Component {
                         <span>Pape Malick</span>
                     </li>
                     <li>
-                        <Link to="/auth/signin" onClick={this.props.logout} className="dud-logout feather-16" title="Logout">
+                        <a href={DEMO} onClick={this.props.logout} className="dud-logout feather-16" title="Logout">
                             <i className="feather icon-power text-warning  " />
-                        </Link>
+                        </a>
                     </li>
                 </ul>
 

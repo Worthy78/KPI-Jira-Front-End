@@ -77,7 +77,6 @@ export const login = (username, password, stayConnected) => dispatch => {
 export const logout = () => (dispatch, getState) => {
     localStorage.removeItem("token");
     localStorage.removeItem('expirationDate');
-    localStorage.removeItem('id');
 
     dispatch({
         type: actionTypes.LOGOUT_SUCCESS
