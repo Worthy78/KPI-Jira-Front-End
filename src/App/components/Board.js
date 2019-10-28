@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Row, DropdownButton, Button, Col } from 'react-bootstrap';
+import { Row, DropdownButton, Button, Col, ButtonGroup } from 'react-bootstrap';
 import Axios from 'axios';
 import config from '../../config';
 import { tokenConfig } from '../utilitity';
 import Sprints from './Sprints';
 import { Select } from 'antd';
 import { ExportExcel } from './ExportExcel';
-
+import ReactToPrint from "react-to-print";
 
 export class Board extends Component {
     constructor(props) {
@@ -53,15 +53,25 @@ export class Board extends Component {
                                 <Row className="mb-2">
                                     <Col>        <ShowDropDown boards={boards} chooseBoard={this.onChooseBoard} /> </Col>
                                     {this.state.dataSource ?
-                                        <Col className="text-right mr-2">
-                                            <ExportExcel csvData={this.state.dataSource} fileName={this.props.projectName} />
-                                        </Col> : null
+                                        <>
+                                            <Col className="text-right mr-2">
+                                                <ButtonGroup >
+                                                    <ExportExcel csvData={this.state.dataSource} fileName={this.props.projectName} />
+                                                    <ReactToPrint
+                                                        trigger={() => <Button variant="danger">  <i className="feather icon-file-text  mx-0 " style={{ fontSize: "25px " }}></i> <span className="font-weight-bold">Pdf</span></Button>}
+                                                        content={() => this.componentRef}
+                                                    />
+                                                </ButtonGroup>
+                                            </Col>
+
+                                        </>
+                                        : null
                                     }
                                 </Row>
                                 <Row>
                                     {
                                         boards.length !== 0 ?
-                                            <Sprints boardId={this.state.selectedBoard ? this.state.selectedBoard : boards[0].id} dataSourceExport={this.dataSourceFromSprintsTable} />
+                                            <Sprints ref={el => (this.componentRef = el)} boardId={this.state.selectedBoard ? this.state.selectedBoard : boards[0].id} dataSourceExport={this.dataSourceFromSprintsTable} />
                                             : null
                                     }
                                 </Row>

@@ -18,6 +18,6 @@ export const ExportExcel = ({ csvData, fileName }) => {
 
     return (
         <Button variant="success" onClick={(e) => exportToCSV(csvData, fileName)}>
-            <i className="feather icon-external-link  mx-0 " style={{ fontSize: "25px " }}></i> <span className="font-weight-bold">Exporter</span></Button>
+            <i className="feather icon-external-link  mx-0 " style={{ fontSize: "25px " }}></i> <span className="font-weight-bold">Excel</span></Button>
     )
 }
