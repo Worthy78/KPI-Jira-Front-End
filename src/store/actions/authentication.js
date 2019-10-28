@@ -75,14 +75,11 @@ export const login = (username, password, stayConnected) => dispatch => {
 
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
-    if (getState().token !== null) {
-        localStorage.removeItem("token");
-        localStorage.removeItem('expirationDate');
-        localStorage.removeItem('id');
+    localStorage.removeItem("token");
+    localStorage.removeItem('expirationDate');
+    localStorage.removeItem('id');
 
-        dispatch({
-            type: actionTypes.LOGOUT_SUCCESS
-        });
-
-    }
+    dispatch({
+        type: actionTypes.LOGOUT_SUCCESS
+    });
 };
