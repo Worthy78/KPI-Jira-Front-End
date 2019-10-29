@@ -2,12 +2,13 @@ import React from 'react'
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Button } from 'react-bootstrap';
+import columns from './SprintData';
 
 export const ExportExcel = ({ csvData, fileName }) => {
-
     const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
     const fileExtension = '.xlsx';
 
+    csvData = formatJson(csvData)
     const exportToCSV = (csvData, fileName) => {
         const ws = XLSX.utils.json_to_sheet(csvData);
         const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
@@ -21,3 +22,14 @@ export const ExportExcel = ({ csvData, fileName }) => {
             <i className="feather icon-external-link  mx-0 " style={{ fontSize: "25px " }}></i> <span className="font-weight-bold">Excel</span></Button>
     )
 }
+
+// Conversion of raw json data to excel kpi file like data format
+const formatJson = (csvData) => (
+    csvData.map((sprint) => {
+        const data = {}
+        columns.forEach(({ title, dataIndex }) => {
+            data[title] = sprint[dataIndex]
+        })
+        return data
+    })
+)

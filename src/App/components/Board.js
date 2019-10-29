@@ -44,52 +44,54 @@ export class Board extends Component {
     }
     render() {
         const boards = this.state.boards
-        return (
-            <div>
-                {
-                    boards ?
-                        (
+
+        if (boards) {
+            const MOST_RECENT_BOARD = boards.length - 1
+            return (
+                <>
+                    <Row className="mb-2">
+                        <Col>
+                            <ShowDropDown boards={boards} mostRecentBoard={MOST_RECENT_BOARD} chooseBoard={this.onChooseBoard} />
+                        </Col>
+                        {this.state.dataSource ?
                             <>
-                                <Row className="mb-2">
-                                    <Col>        <ShowDropDown boards={boards} chooseBoard={this.onChooseBoard} /> </Col>
-                                    {this.state.dataSource ?
-                                        <>
-                                            <Col className="text-right mr-2">
-                                                <ButtonGroup >
-                                                    <ExportExcel csvData={this.state.dataSource} fileName={this.props.projectName} />
-                                                    <ReactToPrint
-                                                        trigger={() => <Button variant="danger">  <i className="feather icon-file-text  mx-0 " style={{ fontSize: "25px " }}></i> <span className="font-weight-bold">Pdf</span></Button>}
-                                                        content={() => this.componentRef}
-                                                    />
-                                                </ButtonGroup>
-                                            </Col>
+                                <Col className="text-right mr-2">
+                                    <ButtonGroup >
+                                        <ExportExcel csvData={this.state.dataSource} fileName={this.props.projectName} />
+                                        <ReactToPrint
+                                            trigger={() => <Button variant="danger">  <i className="feather icon-file-text  mx-0 " style={{ fontSize: "25px " }}></i> <span className="font-weight-bold">Pdf</span></Button>}
+                                            content={() => this.componentRef}
+                                        />
+                                    </ButtonGroup>
+                                </Col>
 
-                                        </>
-                                        : null
-                                    }
-                                </Row>
-                                <Row>
-                                    {
-                                        boards.length !== 0 ?
-                                            <Sprints ref={el => (this.componentRef = el)} boardId={this.state.selectedBoard ? this.state.selectedBoard : boards[0].id} dataSourceExport={this.dataSourceFromSprintsTable} />
-                                            : null
-                                    }
-                                </Row>
                             </>
+                            : null
+                        }
+                    </Row>
+                    <Row>
+                        {
+                            boards.length !== 0 ?
+                                <Sprints ref={el => (this.componentRef = el)} boardId={this.state.selectedBoard ? this.state.selectedBoard : boards[MOST_RECENT_BOARD].id} dataSourceExport={this.dataSourceFromSprintsTable} />
+                                : null
+                        }
+                    </Row>
+                </>
 
-                        )
-                        : <DropdownButton
-                            title={"Chargement..."}
-                            variant={"dark"}
-                            className="ml-2"
-                        />
-                }
-            </div>
-        )
+            )
+        }
+        else
+            return <DropdownButton
+                title={"Chargement..."}
+                variant={"dark"}
+                className="ml-2"
+            />
+
+
     }
 }
 
-const ShowDropDown = ({ boards, chooseBoard }) => {
+const ShowDropDown = ({ boards, chooseBoard, mostRecentBoard }) => {
     if (boards.length === 1)
         return <Button variant={"outline-dark"} className="ml-2">  {boards[0].name} scrum</Button>
     else if (boards.length === 0)
@@ -101,7 +103,7 @@ const ShowDropDown = ({ boards, chooseBoard }) => {
             //     variant={"dark"}
             //     className="ml-2"
             // >
-            <Select style={{ width: 300 }} defaultValue={boards[0].id} onChange={chooseBoard}>
+            <Select style={{ width: 300 }} defaultValue={boards[mostRecentBoard].id} onChange={chooseBoard}>
                 {
                     boards.map(board =>
                         // <Dropdown.Item eventKey={board.id} key={board.id} id={board.id} onClick={(e) => chooseBoard(e)}>
@@ -114,4 +116,5 @@ const ShowDropDown = ({ boards, chooseBoard }) => {
             //</DropdownButton>
         )
 }
+
 export default Board

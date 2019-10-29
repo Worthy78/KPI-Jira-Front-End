@@ -29,7 +29,7 @@ export default {
                     children: [
                         {
                             id: 'uncategorized',
-                            title: 'Pas de catégorie',
+                            title: 'Non catégorisés',
                             type: 'item',
                             url: '/projets/uncategorized'
                         }
