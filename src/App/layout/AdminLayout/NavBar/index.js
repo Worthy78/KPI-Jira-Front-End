@@ -36,7 +36,7 @@ class NavBar extends Component {
                     <a className="mobile-menu" id="mobile-header" href={DEMO.BLANK_LINK}><i className="feather icon-more-horizontal" /></a>
                     <div className="collapse navbar-collapse">
                         <NavLeft />
-                        <NavRight isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} rtlLayout={this.props.rtlLayout} />
+                        <NavRight user={this.props.user} isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} rtlLayout={this.props.rtlLayout} />
                     </div>
                 </header>
             </Aux>
@@ -50,7 +50,8 @@ const mapStateToProps = state => {
         headerBackColor: state.ui.headerBackColor,
         headerFixedLayout: state.ui.headerFixedLayout,
         collapseMenu: state.ui.collapseMenu,
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        user: state.auth.user,
     }
 };
 

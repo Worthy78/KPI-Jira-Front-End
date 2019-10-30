@@ -65,7 +65,7 @@ class AdminLayout extends Component {
                             <div className="pcoded-wrapper">
                                 <div className="pcoded-content">
                                     <div className="pcoded-inner-content">
-                                        <Breadcrumb />
+                                        <Breadcrumb user={this.props.user} />
                                         <div className="main-body">
                                             <div className="page-wrapper">
                                                 <Suspense fallback={<Loader />}>
@@ -93,7 +93,8 @@ const mapStateToProps = state => {
         isFullScreen: state.ui.isFullScreen,
         collapseMenu: state.ui.collapseMenu,
         configBlock: state.ui.configBlock,
-        layout: state.ui.layout
+        layout: state.ui.layout,
+        user: state.auth.user
     }
 };
 

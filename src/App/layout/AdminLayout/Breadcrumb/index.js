@@ -5,11 +5,22 @@ import config from '../../../../config';
 import navigation from '../../../../menu-items';
 import DEMO from "../../../../store/constant";
 import Aux from "../../../../hoc/_Aux";
+import PropTypes from 'prop-types'
 
 class Breadcrumb extends Component {
-    state = {
-        main: [],
-        item: []
+    constructor(props) {
+        super(props)
+        this.state = {
+            main: [],
+            item: []
+        }
+        // ONLY ADMIN CAN CREATE ACCOUNTS
+        if (this.props.user.username !== "admin")
+            navigation.items[navigation.items.length - 1].children.pop()
+    }
+
+    static propTypes = {
+        user: PropTypes.object.isRequired
     };
 
     componentDidMount() {
