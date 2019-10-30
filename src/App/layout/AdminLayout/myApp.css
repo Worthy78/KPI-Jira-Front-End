@@ -17,3 +17,11 @@
   transition: color 0.3s;
   touch-action: manipulation;
 }
+
+.middle-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}

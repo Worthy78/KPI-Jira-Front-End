@@ -117,7 +117,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Col >
+            <Col className='mt-1'>
                 <Row  >
                     <Col sm={4}>
                         <ButtonGroup >
@@ -136,7 +136,7 @@ class Dashboard extends Component {
                     </Col>
                 </Row>
 
-                <Row className="mt-3 justify-content-center ">
+                <Row className="mt-2 justify-content-center ">
                     < PerfectScrollbar className='py-2 px-2' ref={el => (this.componentRef = el)} >
                         <Table columns={dashColumns} className='shadow-1 rounded'
                             //rowKey={record => record.registered}

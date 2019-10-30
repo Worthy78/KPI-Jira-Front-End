@@ -1,11 +1,31 @@
 import React from 'react';
 import './../../../assets/scss/style.scss';
-
-
+import Loading from '../../../App/components/Loader/Loading';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { register } from '../../../store/actions/authentication';
 class SignUp extends React.Component {
-    render() {
-        return (
+    state = {
+        username: "",
+        password: "",
+        email: ""
+    };
 
+    static propTypes = {
+        register: PropTypes.func.isRequired,
+        isLoading: PropTypes.bool.isRequired
+    };
+
+    onSubmit = e => {
+        e.preventDefault();
+        this.props.register(this.state);
+    };
+
+    onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+    render() {
+        const { username, password, email } = this.state;
+        return (
             <div className="auth-wrapper">
                 <div className="auth-content">
                     <div className="auth-bg">
@@ -18,18 +38,46 @@ class SignUp extends React.Component {
                         <div className="card-body text-center">
                             <div className="mb-4">
                                 <i className="feather icon-user-plus auth-icon f-30" />
+                                Ajout utilisateur
                             </div>
-                            <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="Username" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <input type="email" className="form-control" placeholder="Email" />
-                            </div>
-                            <div className="input-group mb-4">
-                                <input type="password" className="form-control" placeholder="password" />
-                            </div>
-                            <button className="btn btn-primary shadow-2 mb-4">Ajouter</button>
+                            {(this.props.isLoading) ?
+                                <Loading fontSize={45} color="orange" />
+                                :
+                                (<form onSubmit={this.onSubmit}>
+                                    <div className="input-group mb-3">
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            placeholder="Email"
+                                            name="email"
+                                            onChange={this.onChange}
+                                            value={email}
+                                        />
+                                    </div>
 
+                                    <div className="input-group mb-3">
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Nom d'utilisateur"
+                                            name="username"
+                                            onChange={this.onChange}
+                                            value={username}
+                                        />
+                                    </div>
+                                    <div className="input-group mb-4">
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            placeholder="Mot de passe"
+                                            name="password"
+                                            onChange={this.onChange}
+                                            value={password}
+                                        />
+                                    </div>
+                                    <button className="btn btn-success shadow-2 mb-4 font-weight-bold" type="submit">Ajouter</button>
+                                </form>
+                                )}
                         </div>
                     </div>
                 </div>
@@ -38,4 +86,12 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp;
+const mapStateToProps = state => ({
+    isLoading: state.auth.isLoading
+});
+
+const mapDispatchToProps = {
+    register
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

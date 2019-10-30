@@ -4,8 +4,9 @@ import updateObject from '../../App/utilitity';
 const initState = {
   authError: null,
   //AUTH
-  isAuthenticated: localStorage.getItem("token") ? true : false,
+  isAuthenticated: false,
   isLoading: false,
+  isLoadingUser: false,
   token: localStorage.getItem("token"),
   // user: null
 }
@@ -40,6 +41,20 @@ const authSuccess = (state, action) => {
   });
 }
 
+//HANDLING USER LOADING
+const userLoaded = (state, action) => {
+  return updateObject(state, {
+    isAuthenticated: true,
+    isLoadingUser: false,
+    user: action.payload
+  });
+}
+const loading = (state, name) => {
+  return updateObject(state, {
+    [name]: true
+  });
+}
+
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_FAIL:
@@ -52,19 +67,32 @@ const authReducer = (state = initState, action) => {
       )
 
     case actionTypes.LOGIN_SUCCESS:
-      console.log('login success');
       return authSuccess(state, action)
 
+    //HANDLING  LOADING START
+    case actionTypes.REGISTER_START:
+    case actionTypes.LOGIN_START:
+      return loading(state, 'isLoading');
+
+    case actionTypes.USER_LOADING_START:
+      return loading(state, 'isLoadingUser');
+
+    case actionTypes.USER_LOADED:
+      return userLoaded(state, action);
+
+    //LOGOUT  
     case actionTypes.LOGOUT_SUCCESS:
       console.log('signout success');
       return initState
 
+    case actionTypes.REGISTER_SUCCESS:
+    case actionTypes.REGISTER_FAIL:
+      return updateObject(state, { isLoading: false })
+
+
+
     // // -----------AUTH---------------//
-    case actionTypes.USER_LOADING:
-      return {
-        ...state,
-        isLoading: true
-      };
+
     // case actionTypes.USER_LOADED:
     //   return userLoaded(state, action);
     // case actionTypes.LOGIN_SUCCESS:

@@ -3,12 +3,11 @@ import axios from "axios";
 
 import * as actionTypes from "../actions";
 import config from "../../config";
+import { tokenConfig } from "../../App/utilitity";
+import { errorMess, createMessage } from "./messages";
 
 //Auth starting (login/register)
 //Auth Loading
-const userLoading = {
-    type: actionTypes.USER_LOADING
-}
 
 // //Auth Loaded
 // const userLoaded = res => ({
@@ -37,9 +36,7 @@ export const checkAuthTimeout = expirationTime => {
 
 // LOGIN USER
 export const login = (username, password, stayConnected) => dispatch => {
-    dispatch(userLoading);
-    // const token = btoa(`${username}:${password}`)
-    // console.log('btoa(string)', token)
+    dispatch({ type: actionTypes.LOGIN_START });
     // Headers
     const headers = {
         headers: {
@@ -51,7 +48,6 @@ export const login = (username, password, stayConnected) => dispatch => {
         username,
         password
     }
-    console.log('body', body)
     axios
         .post(config.baseUrl + "/api/auth/signin", body, headers)
         .then(res => {
@@ -73,6 +69,27 @@ export const login = (username, password, stayConnected) => dispatch => {
         });
 };
 
+// CHECK TOKEN & LOAD USER
+//Auth Loaded
+const userLoaded = res => ({
+    type: actionTypes.USER_LOADED,
+    payload: res.data
+})
+export const loadUser = () => (dispatch, getState) => {
+    // User Loading
+    dispatch({ type: actionTypes.USER_LOADING_START })
+    axios
+        .get(`${config.baseUrl}/api/user/current`, tokenConfig())
+        .then(res => {
+            dispatch(userLoaded(res));
+        })
+        .catch(err => {
+            dispatch(logout())
+            dispatch(errorMess(err));
+            dispatch({ type: actionTypes.USER_LOADING_FAIL });
+        });
+};
+
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
     localStorage.removeItem("token");
@@ -82,3 +99,30 @@ export const logout = () => (dispatch, getState) => {
         type: actionTypes.LOGOUT_SUCCESS
     });
 };
+
+// SIGN UP USER
+const registerSucces = res => {
+    console.log('register payload', res)
+    return {
+        type: actionTypes.REGISTER_SUCCESS,
+        payload: res.data
+    }
+}
+
+export const register = ({ username, password, email }) => dispatch => {
+    dispatch({ type: actionTypes.REGISTER_START })
+
+    axios
+        .post(config.baseUrl + "/api/auth/signup", { username, password, name: email }, tokenConfig())
+        .then(res => {
+            dispatch(registerSucces(res));
+            dispatch(createMessage("Utilisateur créé avec succès"))
+        })
+        .catch(err => {
+            console.log(err)
+            dispatch({
+                type: actionTypes.REGISTER_FAIL
+            });
+            dispatch(errorMess(err));
+        });
+}

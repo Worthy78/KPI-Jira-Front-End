@@ -12,8 +12,7 @@ import routes from "../../../routes";
 import Aux from "../../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import './app.scss';
-import './myApp.css';
+
 
 class AdminLayout extends Component {
 

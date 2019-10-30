@@ -31,12 +31,9 @@ const updateObject = (oldObject, updatedProperties) => {
 }
 
 // Setup config with token - helper function
-export const tokenConfig = (getState = null) => {
+export const tokenConfig = () => {
     // Get token from state
     let token = localStorage.getItem("token")
-    if (getState !== null) {
-        token = getState().token;
-    }
 
     // Headers
     const config = {

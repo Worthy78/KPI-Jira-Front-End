@@ -9,14 +9,9 @@ function UserAccount() {
         <Aux>
             <Row>
                 <Col>
-                    <Card>
-                        <Card.Header>
-                            <Card.Title as="h5">  Ajouter un utilisateur</Card.Title>
-                        </Card.Header>
-                        < Card.Body >
-                            <SignUp />
-                        </Card.Body>
-                    </Card>
+                    <SignUp />
+
+
                 </Col>
             </Row>
         </Aux>
