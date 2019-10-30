@@ -13,7 +13,7 @@ class Sprints extends Component {
         data: [],
         pagination: {
             defaultPageSize: 5,
-            pageSizeOptions: initPageSizeOptions,
+            pageSizeOptions: [...initPageSizeOptions],
             showSizeChanger: true
         },
         loading: false,
@@ -50,8 +50,11 @@ class Sprints extends Component {
                 // Read total count from server
                 pagination.total = payload.totalElements;
                 // add the total page number to pageSize options
-                if (pagination.pageSizeOptions.length === this.state.initialPageSizeLength)
+                if (pagination.pageSizeOptions.length === this.state.initialPageSizeLength) {
                     pagination.pageSizeOptions.push(pagination.total.toString())
+                    // REORDER the numbers
+                    pagination.pageSizeOptions.sort((a, b) => a - b);
+                }
                 // Formating the data to be display
                 const sprintsData = payload.content.map(sprint => {
                     const { name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration } = sprint;
