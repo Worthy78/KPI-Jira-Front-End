@@ -7,7 +7,7 @@ const initState = {
   isAuthenticated: false,
   isLoading: false,
   isLoadingUser: false,
-  token: localStorage.getItem("token"),
+  accessToken: localStorage.getItem("token"),
   // user: null
 }
 /*
@@ -54,6 +54,11 @@ const loading = (state, name) => {
     [name]: true
   });
 }
+const loadingFinished = (state, name) => {
+  return updateObject(state, {
+    [name]: false
+  });
+}
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
@@ -80,16 +85,18 @@ const authReducer = (state = initState, action) => {
     case actionTypes.USER_LOADED:
       return userLoaded(state, action);
 
+    // HADLING LOADING STOP
+    case actionTypes.REGISTER_SUCCESS:
+    case actionTypes.REGISTER_FAIL:
+      return loadingFinished(state, 'isLoading')
+
+    case actionTypes.USER_LOADING_FAIL:
+      return loadingFinished(state, 'isLoadingUser');
+
     //LOGOUT  
     case actionTypes.LOGOUT_SUCCESS:
       console.log('signout success');
       return initState
-
-    case actionTypes.REGISTER_SUCCESS:
-    case actionTypes.REGISTER_FAIL:
-      return updateObject(state, { isLoading: false })
-
-
 
     // // -----------AUTH---------------//
 

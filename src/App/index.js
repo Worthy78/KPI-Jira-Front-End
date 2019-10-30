@@ -8,7 +8,7 @@ import Loader from './components/Loader'
 import Aux from "../hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
 import Alerts from './components/Alerts/Alerts';
-import { loadUser } from '../store/actions/authentication';
+import { authCheckState } from '../store/actions/authentication';
 import Loading from './components/Loader/Loading';
 
 //CSS OF THE ENTIRE APP
@@ -24,7 +24,8 @@ const AdminLayout = Loadable({
 
 class App extends Component {
     componentDidMount() {
-        this.props.loadUser()
+        //if (localStorage.getItem("token"))
+        this.props.onTryAutoSignup();
     }
     render() {
         if (this.props.auth.isLoadingUser)
@@ -52,4 +53,9 @@ class App extends Component {
     }
 }
 
-export default connect(state => ({ auth: state.auth }), { loadUser })(App);
+const mapDispatchToProps = dispatch => {
+    return {
+        onTryAutoSignup: () => dispatch(authCheckState())
+    }
+}
+export default connect(state => ({ auth: state.auth }), mapDispatchToProps)(App);

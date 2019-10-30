@@ -34,6 +34,11 @@ const updateObject = (oldObject, updatedProperties) => {
 export const tokenConfig = () => {
     // Get token from state
     let token = localStorage.getItem("token")
+    // //getState params is used by loaduser action if the user is logged in for the first time
+    // if (getState !== null) {
+    //     token = getState().auth.accessToken;
+    //     console.log('token', getState())
+    // }
 
     // Headers
     const config = {

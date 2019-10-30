@@ -6,15 +6,6 @@ import config from "../../config";
 import { tokenConfig } from "../../App/utilitity";
 import { errorMess, createMessage } from "./messages";
 
-//Auth starting (login/register)
-//Auth Loading
-
-// //Auth Loaded
-// const userLoaded = res => ({
-//     type: actionTypes.USER_LOADED,
-//     payload: res.data
-// })
-
 
 //Auth SUCCESS 
 const authSuccess = res => {
@@ -25,14 +16,31 @@ const authSuccess = res => {
 }
 
 // CHECK 
-export const checkAuthTimeout = expirationTime => {
+export const checkAuthTimeout = expirationTime => {// TIME IN SECOND
     return dispatch => {
         setTimeout(() => {
             dispatch(logout());
-        }, expirationTime * 1000)
+        }, expirationTime * 1000) //CONVERTING TO MILLISECOND
     }
 }
-
+// For checking state if timeout is'nt reached 
+//and the token in localstorage is correct by getting corresponding user
+export const authCheckState = () => (dispatch) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        const expirationDate = new Date(localStorage.getItem('expirationDate'));
+        if (expirationDate <= new Date()) {
+            // TIME IS OUT
+            dispatch(logout());
+        } else {
+            // UPDATE TIMEOUT INFO
+            dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+            dispatch(loadUser());
+        }
+    } else {
+        dispatch(logout());
+    }
+};
 
 // LOGIN USER
 export const login = (username, password, stayConnected) => dispatch => {
@@ -51,14 +59,16 @@ export const login = (username, password, stayConnected) => dispatch => {
     axios
         .post(config.baseUrl + "/api/auth/signin", body, headers)
         .then(res => {
-            if (!stayConnected) {
-                const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 24);
+            if (stayConnected) {
+                const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 24); // ONE DAY
                 localStorage.setItem('expirationDate', expirationDate);
+                dispatch(checkAuthTimeout(3600 * 24));
+            } else {
+                const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 3); // ONE 3 HOURS
+                localStorage.setItem('expirationDate', expirationDate);
+                dispatch(checkAuthTimeout(3 * 3600));
             }
-
-            dispatch(checkAuthTimeout(3600));
-            dispatch(authSuccess(res));
-
+            dispatch(authSuccess(res)).then(dispatch(loadUser()));
         })
         .catch(err => {
             console.log(err)
@@ -84,7 +94,6 @@ export const loadUser = () => (dispatch, getState) => {
             dispatch(userLoaded(res));
         })
         .catch(err => {
-            dispatch(logout())
             dispatch(errorMess(err));
             dispatch({ type: actionTypes.USER_LOADING_FAIL });
         });
@@ -109,6 +118,7 @@ const registerSucces = res => {
     }
 }
 
+//
 export const register = ({ username, password, email }) => dispatch => {
     dispatch({ type: actionTypes.REGISTER_START })
 
