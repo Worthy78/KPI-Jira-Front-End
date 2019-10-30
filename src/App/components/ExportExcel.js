@@ -4,9 +4,12 @@ import * as XLSX from 'xlsx';
 import { Button } from 'react-bootstrap';
 import columns from './SprintData';
 
-export const ExportExcel = ({ csvData, fileName }) => {
+export const ExportExcel = ({ csvData, fileName, propColumns }) => {
     const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
     const fileExtension = '.xlsx';
+
+    if (propColumns)
+        columns = propColumns
 
     csvData = formatJson(csvData)
     const exportToCSV = (csvData, fileName) => {

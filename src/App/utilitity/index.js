@@ -1,3 +1,27 @@
+//Query creator
+//const DATE_FORMAT = 'YYYY-MM-DD';
+export const formatDate = (moment) => {
+    return moment.format('YYYY-MM-DD')
+};
+export const query = (params) => {
+    let theQuery = ''
+    if (params.page && params.pageSize)
+        theQuery += `?page=${params.page}&size=${params.pageSize}`
+    if (params.sortField)
+        theQuery += `&sort=${params.sortField},${params.sortOrder === 'descend' ? 'desc' : 'asc'}`
+    if (params.state && params.state.length !== 0)
+        theQuery += `&state=${params.state[0]}`
+    if (params.startDate && params.endDate) {
+        if (theQuery !== '')
+            theQuery += "&"
+        else
+            theQuery += "?"
+        theQuery += `startPeriod=${formatDate(params.startDate)}&endPeriod=${formatDate(params.endDate)}`
+        console.log('theQuery', theQuery)
+    }
+    return theQuery;
+}
+
 // Update the state 
 const updateObject = (oldObject, updatedProperties) => {
     return {
@@ -23,7 +47,7 @@ export const tokenConfig = (getState = null) => {
 
     // If token, add to headers config
     if (token) {
-         config.headers["Authorization"] = `Bearer ${token}`;
+        config.headers["Authorization"] = `Bearer ${token}`;
     }
 
     return config;

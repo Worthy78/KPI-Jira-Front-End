@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import React, { Component } from 'react'
 import Axios from 'axios';
-import { tokenConfig } from '../utilitity';
+import { tokenConfig, query } from '../utilitity';
 import config from '../../config';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import columns from './SprintData';
@@ -36,16 +36,12 @@ class Sprints extends Component {
     fetch = (params = undefined) => {
         // console.log('params:', params);
         this.setState({ loading: true });
-        let query = ''
+        let theQuery = ''
         if (params) {
-            query += `?page=${params.page}&size=${params.pageSize}`
-            if (params.sortField)
-                query += `&sort=${params.sortField},${params.sortOrder === 'descend' ? 'desc' : 'asc'}`
-            if (params.state && params.state.length !== 0)
-                query += `&state=${params.state[0]}`
+            theQuery = query(params)
         }
         Axios
-            .get(`${config.baseUrl}/sprint/board/${this.props.boardId}/${query}`, tokenConfig())
+            .get(`${config.baseUrl}/sprint/board/${this.props.boardId}/${theQuery}`, tokenConfig())
             .then(res => {
                 const payload = res.data;
                 const pagination = { ...this.state.pagination };
@@ -85,8 +81,8 @@ class Sprints extends Component {
     }
     render() {
         return (
-            < PerfectScrollbar >
-                <Table columns={columns}
+            < PerfectScrollbar className="shadow-1 " >
+                <Table columns={columns} className='shadow-3'
                     //rowKey={record => record.registered}
                     dataSource={this.state.data}
                     pagination={this.state.pagination}

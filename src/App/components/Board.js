@@ -69,7 +69,7 @@ export class Board extends Component {
                             : null
                         }
                     </Row>
-                    <Row>
+                    <Row className="justify-content-center">
                         {
                             boards.length !== 0 ?
                                 <Sprints ref={el => (this.componentRef = el)} boardId={this.state.selectedBoard ? this.state.selectedBoard : boards[MOST_RECENT_BOARD].id} dataSourceExport={this.dataSourceFromSprintsTable} />

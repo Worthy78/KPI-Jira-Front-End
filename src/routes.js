@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
+
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
@@ -27,6 +28,7 @@ const OtherDocs = React.lazy(() => import('./ComponentLib/Other/Docs'));
 const ProjectOverview = React.lazy(() => import('./ComponentLib/Dashboard/Projects'));
 const UpdateDb = React.lazy(() => import('./App/layout/Parameters/UpdateDb'));
 const UserAccount = React.lazy(() => import('./App/layout/Parameters/UserAccount'));
+const Dashboard = React.lazy(() => import('./ComponentLib/Dashboard/Dashboard'));
 
 const routes = [
     { path: '/dashboard/default', exact: true, name: 'Default', component: Nvd3Chart },
@@ -42,6 +44,7 @@ const routes = [
     { path: '/sample-page', exact: true, name: 'Sample Page', component: OtherSamplePage },
     { path: '/docs', exact: true, name: 'Documentation', component: OtherDocs },
     // My routes
+    { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
     { path: '/projets', exact: true, name: 'Projets', component: ProjectOverview },
     { path: '/projets/category/:id', exact: true, name: 'Projets', component: ProjectOverview },
     { path: '/projets/uncategorized', exact: true, name: 'Projets', component: ProjectOverview },
