@@ -20,16 +20,18 @@ dashColumns.unshift(
 )
 dashColumns.splice(dashColumns.length - 4, 4);
 
+const initPageSizeOptions = ['5', '10', '15', '20']
 class Dashboard extends Component {
     state = {
         data: [],
         pagination: {
             defaultPageSize: 10,
-            pageSizeOptions: ['5', '10', '15', '20'],
+            pageSizeOptions: initPageSizeOptions,
             showSizeChanger: true
         },
         loading: false,
-        params: {}
+        params: {},
+        initialPageSizeLength: initPageSizeOptions.length
     };
     handleTableChange = (pagination, filters, sorter) => {
         //console.log('pagination', pagination)
@@ -64,6 +66,9 @@ class Dashboard extends Component {
                 const pagination = { ...this.state.pagination };
                 // Read total count from server
                 pagination.total = payload.totalElements;
+                // add the total page number to pageSize options
+                if (pagination.pageSizeOptions.length === this.state.initialPageSizeLength)
+                    pagination.pageSizeOptions.push(pagination.total.toString())
                 // Formating the data to be display
                 const DashboardData = payload.content.map(sprint => {
                     const { name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration, projectName } = sprint;

@@ -7,24 +7,26 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import columns from './SprintData';
 
 
-
+const initPageSizeOptions = ['5', '10', '15']
 class Sprints extends Component {
     state = {
         data: [],
         pagination: {
             defaultPageSize: 5,
-            pageSizeOptions: ['5', '10', '15'],
+            pageSizeOptions: initPageSizeOptions,
             showSizeChanger: true
         },
         loading: false,
+        initialPageSizeLength: initPageSizeOptions.length
     };
     handleTableChange = (pagination, filters, sorter) => {
-        //console.log('pagination', pagination)
+        //updating pagination informations
         const pager = { ...this.state.pagination };
         pager.current = pagination.current;
         this.setState({
             pagination: pager,
         });
+
         this.fetch({
             pageSize: pagination.pageSize,
             page: pagination.current,
@@ -47,6 +49,9 @@ class Sprints extends Component {
                 const pagination = { ...this.state.pagination };
                 // Read total count from server
                 pagination.total = payload.totalElements;
+                // add the total page number to pageSize options
+                if (pagination.pageSizeOptions.length === this.state.initialPageSizeLength)
+                    pagination.pageSizeOptions.push(pagination.total.toString())
                 // Formating the data to be display
                 const sprintsData = payload.content.map(sprint => {
                     const { name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration } = sprint;
