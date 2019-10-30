@@ -81,8 +81,8 @@ class Sprints extends Component {
     }
     render() {
         return (
-            < PerfectScrollbar className="shadow-1 " >
-                <Table columns={columns} className='shadow-3'
+            < PerfectScrollbar className="shadow-1 rounded" >
+                <Table columns={columns}
                     //rowKey={record => record.registered}
                     dataSource={this.state.data}
                     pagination={this.state.pagination}

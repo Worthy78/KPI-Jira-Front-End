@@ -129,15 +129,17 @@ class Dashboard extends Component {
                     </Col>
                 </Row>
 
-                < PerfectScrollbar className='row mt-3 justify-content-center' ref={el => (this.componentRef = el)} >
-                    <Table columns={dashColumns} className='shadow-3 mb-3'
-                        //rowKey={record => record.registered}
-                        dataSource={this.state.data}
-                        pagination={this.state.pagination}
-                        loading={this.state.loading}
-                        onChange={this.handleTableChange}
-                    />
-                </PerfectScrollbar >
+                <Row className="mt-3 justify-content-center ">
+                    < PerfectScrollbar className='py-2 px-2' ref={el => (this.componentRef = el)} >
+                        <Table columns={dashColumns} className='shadow-1 rounded'
+                            //rowKey={record => record.registered}
+                            dataSource={this.state.data}
+                            pagination={this.state.pagination}
+                            loading={this.state.loading}
+                            onChange={this.handleTableChange}
+                        />
+                    </PerfectScrollbar >
+                </Row>
             </Col>
         );
     }
