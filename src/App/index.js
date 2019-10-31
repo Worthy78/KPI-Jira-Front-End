@@ -40,7 +40,7 @@ class App extends Component {
                             <Alerts />
                             <Switch>
                                 {/* //auth/signin-1 */}
-                                <Route path="/auth/signin" exact={true} name='connexion' component={Signin} />
+                                <Route path="/auth/signin" exact={true} name='connexion' render={() => <Signin />} />
                                 {this.props.auth.isAuthenticated ?
                                     <Route path="/" component={AdminLayout} /> : null
                                 }

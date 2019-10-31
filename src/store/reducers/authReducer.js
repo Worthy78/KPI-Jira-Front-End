@@ -30,12 +30,11 @@ const userLoaded = (state, action) => {
 
 const authSuccess = (state, action) => {
   //  localStorage.setItem("id", action.payload.user.id); // save user's id
-  console.log('action', action)
   const { accessToken } = action.payload;
   localStorage.setItem("token", accessToken);
   return updateObject(state, {
     // user,
-    accessToken,
+    //accessToken,
     isAuthenticated: true,
     isLoading: false
   });
