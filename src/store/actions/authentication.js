@@ -6,6 +6,8 @@ import config from "../../config";
 import { tokenConfig } from "../../App/utilitity";
 import { errorMess, createMessage } from "./messages";
 
+// CONST 
+const HOUR_IN_MILLISECOND = (3600 * 1000)
 
 //Auth SUCCESS 
 const authSuccess = res => {
@@ -60,18 +62,20 @@ export const login = (username, password, stayConnected) => dispatch => {
         .post(config.baseUrl + "/api/auth/signin", body, headers)
         .then(res => {
             if (stayConnected) {
-                const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 24); // ONE DAY
+                const expirationDate = new Date(new Date().getTime() + HOUR_IN_MILLISECOND * 24); // ONE DAY
                 localStorage.setItem('expirationDate', expirationDate);
                 dispatch(checkAuthTimeout(3600 * 24));
             } else {
-                const expirationDate = new Date(new Date().getTime() + (3600 * 1000) * 3); // ONE 3 HOURS
+                const expirationDate = new Date(new Date().getTime() + HOUR_IN_MILLISECOND * 3); // ONE 3 HOURS
                 localStorage.setItem('expirationDate', expirationDate);
                 dispatch(checkAuthTimeout(3 * 3600));
             }
-            dispatch(authSuccess(res)).then(dispatch(loadUser()));
+            dispatch(loadUser(res.data.accessToken))
+            dispatch(authSuccess(res))
         })
         .catch(err => {
-            console.log(err)
+            console.log('login error', err)
+            dispatch(errorMess(err));
             dispatch({
                 type: actionTypes.LOGIN_FAIL
             });
@@ -85,11 +89,11 @@ const userLoaded = res => ({
     type: actionTypes.USER_LOADED,
     payload: res.data
 })
-export const loadUser = () => (dispatch, getState) => {
+export const loadUser = (token = undefined) => (dispatch, getState) => {
     // User Loading
     dispatch({ type: actionTypes.USER_LOADING_START })
     axios
-        .get(`${config.baseUrl}/api/user/current`, tokenConfig())
+        .get(`${config.baseUrl}/api/user/current`, tokenConfig(token))
         .then(res => {
             dispatch(userLoaded(res));
         })

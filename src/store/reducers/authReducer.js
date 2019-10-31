@@ -63,7 +63,6 @@ const loadingFinished = (state, name) => {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_FAIL:
-      console.log('login error', action.payload);
       return updateObject(state,
         {
           authError: 'Login failed',

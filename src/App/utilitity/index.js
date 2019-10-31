@@ -31,14 +31,13 @@ const updateObject = (oldObject, updatedProperties) => {
 }
 
 // Setup config with token - helper function
-export const tokenConfig = () => {
+//initToken params is used by loaduser action if the user is logged in for the first time
+export const tokenConfig = (initToken = undefined) => {
     // Get token from state
     let token = localStorage.getItem("token")
-    // //getState params is used by loaduser action if the user is logged in for the first time
-    // if (getState !== null) {
-    //     token = getState().auth.accessToken;
-    //     console.log('token', getState())
-    // }
+
+    if (initToken)
+        token = initToken
 
     // Headers
     const config = {
