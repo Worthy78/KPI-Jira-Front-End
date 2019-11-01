@@ -1,4 +1,4 @@
-import { CREATE_MESSAGE, GET_ERRORS } from "../actions";
+import { CREATE_MESSAGE, AUTH_ERROR } from "../actions";
 
 // CREATE MESSAGE
 export const createMessage = message => {
@@ -11,13 +11,13 @@ export const createMessage = message => {
 // RETURN ERRORS
 export const authErrorMess = (error) => {
   return {
-    type: GET_ERRORS,
+    type: AUTH_ERROR,
     payload: error
   };
 };
 export const errorMess = (error) => {
   return {
-    type: GET_ERRORS,
+    type: AUTH_ERROR,
     payload: error
   };
 };

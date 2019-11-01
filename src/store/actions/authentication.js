@@ -4,7 +4,7 @@ import axios from "axios";
 import * as actionTypes from "../actions";
 import config from "../../config";
 import { tokenConfig } from "../../App/utilitity";
-import { errorMess, createMessage } from "./messages";
+import { authErrorMess, createMessage } from "./messages";
 
 // CONST 
 const HOUR_IN_MILLISECOND = (3600 * 1000)
@@ -75,7 +75,7 @@ export const login = (username, password, stayConnected) => dispatch => {
         })
         .catch(err => {
             console.log('login error', err)
-            dispatch(errorMess(err));
+            dispatch(authErrorMess(err));
             dispatch({
                 type: actionTypes.LOGIN_FAIL
             });
@@ -98,7 +98,7 @@ export const loadUser = (token = undefined) => (dispatch, getState) => {
             dispatch(userLoaded(res));
         })
         .catch(err => {
-            dispatch(errorMess(err));
+            dispatch(authErrorMess(err));
             dispatch({ type: actionTypes.USER_LOADING_FAIL });
         });
 };
@@ -137,6 +137,6 @@ export const register = ({ username, password, email }) => dispatch => {
             dispatch({
                 type: actionTypes.REGISTER_FAIL
             });
-            dispatch(errorMess(err));
+            dispatch(authErrorMess(err));
         });
 }

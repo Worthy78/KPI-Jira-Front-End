@@ -61,13 +61,6 @@ const loadingFinished = (state, name) => {
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_FAIL:
-      return updateObject(state,
-        {
-          authError: 'Login failed',
-          isLoading: false
-        }
-      )
 
     case actionTypes.LOGIN_SUCCESS:
       return authSuccess(state, action)
@@ -86,6 +79,7 @@ const authReducer = (state = initState, action) => {
     // HADLING LOADING STOP
     case actionTypes.REGISTER_SUCCESS:
     case actionTypes.REGISTER_FAIL:
+    case actionTypes.LOGIN_FAIL:
       return loadingFinished(state, 'isLoading')
 
     case actionTypes.USER_LOADING_FAIL:

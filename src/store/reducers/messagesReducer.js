@@ -1,4 +1,4 @@
-import { CREATE_MESSAGE, GET_ERRORS } from "../actions";
+import { CREATE_MESSAGE, GET_ERRORS, AUTH_ERROR } from "../actions";
 import updateObject from "../../App/utilitity";
 
 const initialState = {
@@ -15,6 +15,7 @@ export default function (state = initialState, action) {
       return updateObject(state, { message: action.message });
 
     case GET_ERRORS:
+    case AUTH_ERROR:
       return updateObject(state,
         {
           error:
