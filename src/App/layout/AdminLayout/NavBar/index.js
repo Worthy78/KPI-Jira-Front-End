@@ -7,6 +7,7 @@ import Aux from "../../../../hoc/_Aux";
 import DEMO from "../../../../store/constant";
 import * as actionTypes from "../../../../store/actions";
 import { logout } from '../../../../store/actions/authentication';
+import Logo from '../../../components/Loader/Logo';
 
 class NavBar extends Component {
     render() {
@@ -24,9 +25,9 @@ class NavBar extends Component {
                 <header className={headerClass.join(' ')}>
                     <div className="m-header">
                         <a className={toggleClass.join(' ')} id="mobile-collapse1" href={DEMO.BLANK_LINK} onClick={this.props.onToggleNavigation}><span /></a>
-                        <a href={DEMO.BLANK_LINK} className="b-brand">
+                        <a href={DEMO.DASHBORD} className="b-brand">
                             <div>
-                                <img src={require("../../../../assets/images/jira-logo-scaled.png")} className="img-fluid" alt="" />
+                                <Logo fontWeight={600} className="f-30 px-1 rounded " />
                             </div>
                             <span className="b-title font-weight-bold pl-1">JIRA KPI
                             <i className="fa fa-tachometer text-white fa-1-5x pl-2" />

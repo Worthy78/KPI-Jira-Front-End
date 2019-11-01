@@ -18,6 +18,7 @@ dashColumns.unshift(
         dataIndex: 'projectName'
     }
 )
+// remove KPIs  &&  only show raw data extrated from JIRA
 dashColumns.splice(dashColumns.length - 4, 4);
 
 const initPageSizeOptions = ['5', '10', '15', '20']
@@ -119,7 +120,7 @@ class Dashboard extends Component {
         return (
             <Col className='mt-1'>
                 <Row  >
-                    <Col sm={4}>
+                    <Col sm={4} xs={12}>
                         <ButtonGroup >
                             <ExportExcel csvData={this.state.data} fileName={"Extraction - " + formatDate(moment())} columns={dashColumns} />
                             <ReactToPrint
@@ -127,8 +128,8 @@ class Dashboard extends Component {
                                 content={() => this.componentRef}
                             />
                         </ButtonGroup>
-                    </Col>
-                    <Col className="align-self-center text-right ">
+                    </Col >
+                    <Col sm={8} xs={12} className="align-self-center text-right ">
                         <DateRange onPickDate={this.onPickDate} />
                         <Button onClick={this.onDatePicked} variant="outline-success" className="btn-icon  btn-rounded ml-2">
                             <i className="feather icon-save" aria-hidden="true"></i>

@@ -9,11 +9,13 @@ import Aux from "../hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
 import Alerts from './components/Alerts/Alerts';
 import { authCheckState } from '../store/actions/authentication';
-import Loading from './components/Loader/Loading';
+import Fade from 'react-reveal';
+import Wobble from 'react-reveal/Wobble';
 
 //CSS OF THE ENTIRE APP
 import './layout/AdminLayout/app.scss';
 import './layout/AdminLayout/myApp.css';
+import Logo from './components/Loader/Logo';
 
 const Signin = React.lazy(() => import('../ComponentLib/Authentication/SignIn/SignIn'));
 
@@ -29,25 +31,34 @@ class App extends Component {
     }
     render() {
         if (this.props.auth.isLoadingUser)
+            //if (true)
             return (
-                <Loading fontSize={100} color="orange" className="middle-page"> <h3> Chargement... </h3> </Loading>
+                //<Loading fontSize={100} color="orange" className="middle-page"> <h3> Chargement... </h3> </Loading>
+                <div className="middle-page">
+                    <Wobble forever={true} duration={1500} >
+                        <Logo fontWeight={600} className="f-60 px-1" />
+                    </Wobble>
+                    <h3> Chargement... </h3>
+                </div>
             )
         else
             return (
                 <Aux>
-                    <ScrollToTop>
-                        <Suspense fallback={<Loader />}>
-                            <Alerts />
-                            <Switch>
-                                {/* //auth/signin-1 */}
-                                <Route path="/auth/signin" exact={true} name='connexion' render={() => <Signin />} />
-                                {this.props.auth.isAuthenticated ?
-                                    <Route path="/" component={AdminLayout} /> : null
-                                }
-                                <Redirect to="/auth/signin" />
-                            </Switch>
-                        </Suspense>
-                    </ScrollToTop>
+                    <Fade big>
+                        <ScrollToTop>
+                            <Suspense fallback={<Loader />}>
+                                <Alerts />
+                                <Switch>
+                                    {/* //auth/signin-1 */}
+                                    <Route path="/auth/signin" exact={true} name='connexion' render={() => <Fade ><Signin /></Fade>} />
+                                    {this.props.auth.isAuthenticated ?
+                                        <Route path="/" component={AdminLayout} /> : null
+                                    }
+                                    <Redirect to="/auth/signin" />
+                                </Switch>
+                            </Suspense>
+                        </ScrollToTop>
+                    </Fade>
                 </Aux>
             );
     }
