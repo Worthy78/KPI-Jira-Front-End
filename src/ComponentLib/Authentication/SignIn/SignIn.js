@@ -11,7 +11,7 @@ import config from '../../../config';
 import Loading from '../../../App/components/Loader/Loading';
 
 
-class SignUp1 extends React.Component {
+class Login extends React.Component {
     state = {
         username: "",
         password: "",
@@ -67,6 +67,7 @@ class SignUp1 extends React.Component {
                                                     name="username"
                                                     onChange={this.onChange}
                                                     value={username}
+                                                    required={true}
                                                 />
                                             </div>
                                             <div className="input-group mb-4">
@@ -77,6 +78,7 @@ class SignUp1 extends React.Component {
                                                     name="password"
                                                     onChange={this.onChange}
                                                     value={password}
+                                                    required={true}
                                                 />
                                             </div>
                                             <div className="form-group text-left">
@@ -116,4 +118,4 @@ const mapDispatchToProps = {
     login
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp1);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
