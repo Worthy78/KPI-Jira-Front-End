@@ -5,6 +5,8 @@ import * as actionTypes from "../actions";
 import config from "../../config";
 import { tokenConfig } from "../../App/utilitity";
 import { authErrorMess, createMessage } from "./messages";
+import { resetNavigation } from "../../menu-items";
+
 
 // CONST 
 const HOUR_IN_MILLISECOND = (3600 * 1000)
@@ -105,6 +107,9 @@ export const loadUser = (token = undefined) => (dispatch, getState) => {
 
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
+    //Reset navigation bar
+    resetNavigation()
+    //Reset token and expiration date
     localStorage.removeItem("token");
     localStorage.removeItem('expirationDate');
 
