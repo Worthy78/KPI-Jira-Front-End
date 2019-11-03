@@ -13,8 +13,8 @@ import Aux from "../../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-
 class AdminLayout extends Component {
+
 
     fullScreenExitHandler = () => {
         if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
@@ -101,7 +101,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFullScreenExit: () => dispatch({ type: actionTypes.FULL_SCREEN_EXIT }),
-        onComponentWillMount: () => dispatch({ type: actionTypes.COLLAPSE_MENU })
+        onComponentWillMount: () => dispatch({ type: actionTypes.COLLAPSE_MENU }),
     }
 };
 

@@ -9,7 +9,6 @@ import OutsideClick from './OutsideClick';
 import Aux from './../../../../hoc/_Aux'
 import * as actionTypes from './../../../../store/actions';
 import navigation from '../../../../menu-items';
-import { getCategories } from '../../../../store/actions/projectActions';
 
 class Navigation extends Component {
 
@@ -24,7 +23,6 @@ class Navigation extends Component {
     componentDidMount() {
         this.resize();
         window.addEventListener('resize', this.resize)
-        this.props.getCategories();
     }
 
     componentWillUnmount() {
@@ -108,18 +106,6 @@ class Navigation extends Component {
             document.body.classList.remove('box-layout');
         }
 
-        // B.Logic
-        const plateaux = navigation.items[1].children[0].children
-        if (plateaux.length === 1 && this.props.categories !== undefined)
-            this.props.categories.forEach(category => {
-                let categoryNav = { type: 'item' }
-                categoryNav.id = category.name.replace(/\s+/g, '-').toLowerCase()
-                categoryNav.title = category.name
-                categoryNav.url = "/projets/category/" + category.id
-                // adding the category to the navigation object
-                navigation.items[1].children[0].children.push(categoryNav)
-            })
-
         let navContent = (
             <div className="navbar-wrapper">
                 <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
@@ -168,14 +154,11 @@ const mapStateToProps = state => {
         navActiveListColor: state.ui.navActiveListColor,
         navListTitleColor: state.ui.navListTitleColor,
         navListTitleHide: state.ui.navListTitleHide,
-        // B . L
-        categories: state.project.category.categories
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCategories: () => dispatch(getCategories),
         onToggleNavigation: () => dispatch({ type: actionTypes.COLLAPSE_MENU }),
         onChangeLayout: (layout) => dispatch({ type: actionTypes.CHANGE_LAYOUT, layout: layout }),
     }

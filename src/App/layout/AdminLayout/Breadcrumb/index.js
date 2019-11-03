@@ -14,10 +14,6 @@ class Breadcrumb extends Component {
             main: [],
             item: []
         }
-        // ONLY ADMIN CAN CREATE ACCOUNTS
-        const parametersMenuItem = navigation.items[navigation.items.length - 1].children
-        if (this.props.user.username !== "admin" && parametersMenuItem.length === 2)
-            parametersMenuItem.pop()
     }
 
     static propTypes = {

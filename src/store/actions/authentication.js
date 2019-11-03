@@ -6,6 +6,7 @@ import config from "../../config";
 import { tokenConfig } from "../../App/utilitity";
 import { authErrorMess, createMessage } from "./messages";
 import { resetNavigation } from "../../menu-items";
+import { getCategories } from "./projectActions";
 
 
 // CONST 
@@ -91,6 +92,7 @@ const userLoaded = res => ({
     type: actionTypes.USER_LOADED,
     payload: res.data
 })
+// GETTING user and CATEGORIES (categories will setup navigation sidebar items)
 export const loadUser = (token = undefined) => (dispatch, getState) => {
     // User Loading
     dispatch({ type: actionTypes.USER_LOADING_START })
@@ -98,6 +100,8 @@ export const loadUser = (token = undefined) => (dispatch, getState) => {
         .get(`${config.baseUrl}/api/user/current`, tokenConfig(token))
         .then(res => {
             dispatch(userLoaded(res));
+            // GETTING CATEGORIES
+            dispatch(getCategories())
         })
         .catch(err => {
             dispatch(authErrorMess(err));

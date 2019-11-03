@@ -66,7 +66,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTryAutoSignup: () => dispatch(authCheckState())
+        onTryAutoSignup: () => dispatch(authCheckState()),
     }
 }
 export default connect(state => ({ auth: state.auth }), mapDispatchToProps)(App);

@@ -24,6 +24,7 @@ const projectReducer = (state = initialState, action) => {
             return updateObject(state,
                 {
                     category: {
+                        //not necessary should be removed in futur releases
                         categories: action.payload,
                         isLoading: false
                     }
