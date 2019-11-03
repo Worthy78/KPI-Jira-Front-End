@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
 import MainCard from '../../App/components/MainCard';
 import Axios from 'axios';
-import config from '../../config';
+import config from '../../constants/config';
 import { tokenConfig } from '../../App/utilitity';
 import Board from '../../App/components/Board';
 import { Pagination } from 'antd';
@@ -30,7 +30,7 @@ class Projects extends React.Component {
 
         if (this.props.match.params.id)
             Axios
-                .get(config.baseUrl + "/project/category/" + this.props.match.params.id + query, tokenConfig())
+                .get(config.apiBaseUrl + "/project/category/" + this.props.match.params.id + query, tokenConfig())
                 .then(res => this.setState({
                     projects: res.data.content,
                     pagination: {
@@ -44,7 +44,7 @@ class Projects extends React.Component {
                 });
         else
             Axios
-                .get(config.baseUrl + "/project/category/autres" + query, tokenConfig())
+                .get(config.apiBaseUrl + "/project/category/autres" + query, tokenConfig())
                 .then(res => this.setState({
                     projects: res.data.content,
                     pagination: {

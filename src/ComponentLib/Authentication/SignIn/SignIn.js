@@ -7,7 +7,7 @@ import Aux from "../../../hoc/_Aux";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from '../../../store/actions/authentication';
-import config from '../../../config';
+import config from '../../../constants/config';
 import Loading from '../../../App/components/Loader/Loading';
 
 
@@ -94,8 +94,8 @@ class Login extends React.Component {
                                                 </div>
                                             </div>
                                             <button className="btn btn-success shadow-2 mb-4 font-weight-bold" type="submit">Se connecter</button>
-                                            <p className="mb-2 text-muted"> <a href={config.baseUrl + "/secure/ForgotLoginDetails.jspa"}>Impossible de se connecter?</a></p>
-                                            <p className="mb-0 text-muted">Pas encore membre? Contacter <a href={config.baseUrl + "/secure/ContactAdministrators!default.jspa"}>L'administrateur</a></p>
+                                            <p className="mb-2 text-muted"> <a href={config.apiBaseUrl + "/secure/ForgotLoginDetails.jspa"}>Impossible de se connecter?</a></p>
+                                            <p className="mb-0 text-muted">Pas encore membre? Contacter <a href={config.apiBaseUrl + "/secure/ContactAdministrators!default.jspa"}>L'administrateur</a></p>
                                         </form>
                                         )}
                                 </div>

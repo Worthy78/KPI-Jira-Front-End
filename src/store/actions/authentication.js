@@ -2,7 +2,7 @@ import axios from "axios";
 // import { authErrorMess, createMessage } from "./messages";
 
 import * as actionTypes from "../actions";
-import config from "../../config";
+import config from "../../constants/config";
 import { tokenConfig } from "../../App/utilitity";
 import { authErrorMess, createMessage } from "./messages";
 import { resetNavigation } from "../../menu-items";
@@ -62,7 +62,7 @@ export const login = (username, password, stayConnected) => dispatch => {
         password
     }
     axios
-        .post(config.baseUrl + "/api/auth/signin", body, headers)
+        .post(config.apiBaseUrl + "/api/auth/signin", body, headers)
         .then(res => {
             if (stayConnected) {
                 const expirationDate = new Date(new Date().getTime() + HOUR_IN_MILLISECOND * 24); // ONE DAY
@@ -97,7 +97,7 @@ export const loadUser = (token = undefined) => (dispatch, getState) => {
     // User Loading
     dispatch({ type: actionTypes.USER_LOADING_START })
     axios
-        .get(`${config.baseUrl}/api/user/current`, tokenConfig(token))
+        .get(`${config.apiBaseUrl}/api/user/current`, tokenConfig(token))
         .then(res => {
             dispatch(userLoaded(res));
             // GETTING CATEGORIES
@@ -136,7 +136,7 @@ export const register = ({ username, password, email }) => dispatch => {
     dispatch({ type: actionTypes.REGISTER_START })
 
     axios
-        .post(config.baseUrl + "/api/auth/signup", { username, password, name: email }, tokenConfig())
+        .post(config.apiBaseUrl + "/api/auth/signup", { username, password, name: email }, tokenConfig())
         .then(res => {
             dispatch(registerSucces(res));
             dispatch(createMessage("Utilisateur créé avec succès"))

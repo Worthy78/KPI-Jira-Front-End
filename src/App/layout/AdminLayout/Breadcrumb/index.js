@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import config from '../../../../config';
+import config from '../../../../constants/config';
 import navigation from '../../../../menu-items';
 import DEMO from "../../../../store/constant";
 import Aux from "../../../../hoc/_Aux";

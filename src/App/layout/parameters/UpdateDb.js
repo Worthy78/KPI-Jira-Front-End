@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import Loading from '../../components/Loader/Loading';
 import UcFirst from '../../components/UcFirst';
 import Axios from 'axios';
-import config from '../../../config';
+import config from '../../../constants/config';
 import { tokenConfig } from '../../utilitity';
 
 class UpdateDb extends React.Component {
@@ -31,7 +31,7 @@ class UpdateDb extends React.Component {
         // }, 2000);
 
         Axios
-            .get(`${config.baseUrl}/update`, tokenConfig())
+            .get(`${config.apiBaseUrl}/update`, tokenConfig())
             .then(res => {
                 setTimeout(() => {
                     this.setState({

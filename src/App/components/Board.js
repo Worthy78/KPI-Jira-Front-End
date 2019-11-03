@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Row, DropdownButton, Button, Col, ButtonGroup } from 'react-bootstrap';
 import Axios from 'axios';
-import config from '../../config';
+import config from '../../constants/config';
 import { tokenConfig } from '../utilitity';
 import Sprints from './Sprints';
 import { Select } from 'antd';
@@ -21,7 +21,7 @@ export class Board extends Component {
 
     fetchBoards = () => {
         Axios
-            .get(config.baseUrl + "/boards/project/" + this.props.projectId, tokenConfig())
+            .get(config.apiBaseUrl + "/boards/project/" + this.props.projectId, tokenConfig())
             .then(res => {
                 this.setState({ boards: res.data })
             })

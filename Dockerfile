@@ -4,7 +4,7 @@ FROM node:12.4.0-alpine as build
 # Configure the main working directory inside the docker image. 
 # This is the base directory used in any further RUN, COPY, and ENTRYPOINT 
 # commands.
-WORKDIR /jirakpifront
+WORKDIR /app
 
 # Copy the package.json as well as the package-lock.json and install 
 # the dependencies. This is a separate step so the dependencies 
@@ -14,7 +14,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 # Copy the main application
-COPY . ./
+COPY . /app
 
 # Arguments
 ARG REACT_APP_API_BASE_URL
@@ -27,7 +27,7 @@ RUN npm run build
 FROM nginx:1.17.0-alpine
 
 # Copy the react build from Stage 1
-COPY --from=build /jirakpifront/build /var/www
+COPY --from=build /app/build /var/www
 
 # Copy our custom nginx config
 COPY nginx.conf /etc/nginx/nginx.conf

@@ -2,7 +2,7 @@ import { Table } from 'antd';
 import React, { Component } from 'react'
 import Axios from 'axios';
 import { tokenConfig, query } from '../utilitity';
-import config from '../../config';
+import config from '../../constants/config';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import columns from './SprintData';
 
@@ -43,7 +43,7 @@ class Sprints extends Component {
             theQuery = query(params)
         }
         Axios
-            .get(`${config.baseUrl}/sprint/board/${this.props.boardId}/${theQuery}`, tokenConfig())
+            .get(`${config.apiBaseUrl}/sprint/board/${this.props.boardId}/${theQuery}`, tokenConfig())
             .then(res => {
                 const payload = res.data;
                 const pagination = { ...this.state.pagination };

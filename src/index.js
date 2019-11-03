@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App/index';
 import * as serviceWorker from './serviceWorker';
-import config from './config';
+import config from './constants/config';
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import rootReducer from './store/reducers/rootReducer'

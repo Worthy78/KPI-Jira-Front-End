@@ -1,7 +1,7 @@
 // GETTING CATEGORIES
 import * as actionTypes from "../actions"
 import Axios from "axios";
-import config from "../../config";
+import config from "../../constants/config";
 import { errorMess } from "./messages";
 import { tokenConfig } from "../../App/utilitity";
 import { setUpSideBar } from "../../menu-items";
@@ -10,7 +10,7 @@ import { setUpSideBar } from "../../menu-items";
 export const getCategories = () => (dispatch, getState) => {
     dispatch({ type: actionTypes.CATEGORY_LOADING });
     Axios
-        .get(config.baseUrl + "/category", tokenConfig())
+        .get(config.apiBaseUrl + "/category", tokenConfig())
         .then(res => {
             dispatch({ type: actionTypes.CATEGORY_LOADED, payload: res.data });
             // B.Logic of navigation sidebar - 

@@ -8,7 +8,7 @@ import {
 import Axios from 'axios';
 import { tokenConfig } from '../../../../../utilitity';
 import Board from '../../../../../components/Board';
-import config from '../../../../../../config';
+import config from '../../../../../../constants/config';
 
 const { Option } = AutoComplete;
 class ProjectSearch extends Component {
@@ -51,7 +51,7 @@ class ProjectSearch extends Component {
     handleSearch = (value) => {
         if (value !== "")
             Axios
-                .get(`${config.baseUrl}/project/search/${value}`, tokenConfig())
+                .get(`${config.apiBaseUrl}/project/search/${value}`, tokenConfig())
                 .then(res => {
                     const results = res.data;
                     this.setState({

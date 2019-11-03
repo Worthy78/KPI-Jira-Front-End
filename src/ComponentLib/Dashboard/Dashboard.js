@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import React, { Component } from 'react'
 import Axios from 'axios';
-import config from '../../config';
+import config from '../../constants/config';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Row, Button, Col, ButtonGroup } from 'react-bootstrap';
 import ReactToPrint from "react-to-print";
@@ -61,7 +61,7 @@ class Dashboard extends Component {
             theQuery = query(params)
         }
         Axios
-            .get(`${config.baseUrl}/sprint/dashboard/${theQuery}`, tokenConfig())
+            .get(`${config.apiBaseUrl}/sprint/dashboard/${theQuery}`, tokenConfig())
             .then(res => {
                 const payload = res.data;
                 const pagination = { ...this.state.pagination };
