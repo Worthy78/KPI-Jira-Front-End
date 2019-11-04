@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Aux from "../../../../../hoc/_Aux";
 import { Redirect } from 'react-router-dom'
 import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
-import DEMO from '../../../../../store/constant';
+import DEMO from '../../../../../constants/constant';
 
 
 class NavRight extends Component {
@@ -21,7 +21,7 @@ class NavRight extends Component {
                         <span>{this.props.user.username}</span>
                     </li>
                     <li>
-                        <a href={DEMO.BLANK_LINK} onClick={this.props.logout} className="dud-logout feather-16" title="Logout">
+                        <a href={DEMO.LOGIN} onClick={this.props.logout} className="dud-logout feather-16" title="Logout">
                             <i className="feather icon-power text-warning  " />
                         </a>
                     </li>

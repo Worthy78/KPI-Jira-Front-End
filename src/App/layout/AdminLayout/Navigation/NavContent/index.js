@@ -6,7 +6,7 @@ import windowSize from 'react-window-size';
 
 import Aux from "../../../../../hoc/_Aux";
 import NavGroup from './NavGroup';
-import DEMO from "../../../../../store/constant";
+import DEMO from "../../../../../constants/constant";
 import * as actionTypes from "../../../../../store/actions";
 import Loading from '../../../../components/Loader/Loading';
 

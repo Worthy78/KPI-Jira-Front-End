@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
 import Aux from "../../../../hoc/_Aux";
-import DEMO from "../../../../store/constant";
+import DEMO from "../../../../constants/constant";
 import * as actionTypes from "../../../../store/actions";
 import { logout } from '../../../../store/actions/authentication';
 import Logo from '../../../components/Loader/Logo';

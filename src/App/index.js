@@ -25,11 +25,14 @@ const AdminLayout = Loadable({
 });
 
 class App extends Component {
-    componentDidMount() {
-        //if (localStorage.getItem("token"))
+
+    constructor(props) {
+        super(props)
         this.props.onTryAutoSignup();
     }
+
     render() {
+        console.log('this.props.auth.isLoadingUser', this.props.auth.isLoadingUser)
         if (this.props.auth.isLoadingUser)
             //if (true)
             return (
@@ -42,25 +45,25 @@ class App extends Component {
                 </div>
             )
         else
-            return (
-                <Aux>
-                    <Fade big>
-                        <ScrollToTop>
-                            <Suspense fallback={<Loader />}>
-                                <Alerts />
-                                <Switch>
-                                    {/* //auth/signin-1 */}
-                                    <Route path="/auth/signin" exact={true} name='connexion' render={() => <Fade ><Signin /></Fade>} />
-                                    {this.props.auth.isAuthenticated ?
-                                        <Route path="/" component={AdminLayout} /> : null
-                                    }
-                                    <Redirect to="/auth/signin" />
-                                </Switch>
-                            </Suspense>
-                        </ScrollToTop>
-                    </Fade>
-                </Aux>
-            );
+            console.log('this.props', this.props)
+        return (
+            <Aux>
+                <Fade big>
+                    <ScrollToTop>
+                        <Suspense fallback={<Loader />}>
+                            <Alerts />
+                            <Switch>
+                                {/* //auth/signin-1 */}
+                                <Route path="/auth/signin" exact={true} name='connexion' render={() => <Fade ><Signin /></Fade>} />
+                                {this.props.auth.isAuthenticated ?
+                                    <Route path="/" component={AdminLayout} /> : null
+                                }
+                            </Switch>
+                        </Suspense>
+                    </ScrollToTop>
+                </Fade>
+            </Aux>
+        );
     }
 }
 

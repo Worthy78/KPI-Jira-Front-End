@@ -14,6 +14,7 @@ export const ExportExcel = ({ csvData, fileName, propColumns }) => {
     csvData = formatJson(csvData)
     const exportToCSV = (csvData, fileName) => {
         const ws = XLSX.utils.json_to_sheet(csvData);
+        console.log('ws', ws)
         const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
         const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
         const data = new Blob([excelBuffer], { type: fileType });

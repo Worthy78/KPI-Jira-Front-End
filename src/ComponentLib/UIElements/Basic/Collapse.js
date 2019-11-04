@@ -8,7 +8,7 @@ import {
 } from 'react-bootstrap';
 
 import Aux from "../../../hoc/_Aux";
-import DEMO from "../../../store/constant";
+import DEMO from "../../../constants/constant";
 
 class BasicCollapse extends Component {
     state = {

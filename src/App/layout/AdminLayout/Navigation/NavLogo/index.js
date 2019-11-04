@@ -1,5 +1,5 @@
 import React from 'react';
-import DEMO from './../../../../../store/constant';
+import DEMO from '../../../../../constants/constant';
 import Aux from "../../../../../hoc/_Aux";
 import Logo from '../../../../components/Loader/Logo';
 

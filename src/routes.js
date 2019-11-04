@@ -22,6 +22,7 @@ const ProjectOverview = React.lazy(() => import('./ComponentLib/Dashboard/Projec
 const UpdateDb = React.lazy(() => import('./App/layout/Parameters/UpdateDb'));
 const UserAccount = React.lazy(() => import('./App/layout/Parameters/UserAccount'));
 const Dashboard = React.lazy(() => import('./ComponentLib/Dashboard/Dashboard'));
+const NotFound = React.lazy(() => import('./App/layout/NotFound'));
 
 const routes = [
     { path: '/dashboard/default', exact: true, name: 'Default', component: Nvd3Chart },
@@ -40,6 +41,7 @@ const routes = [
     { path: '/projets/uncategorized', exact: true, name: 'Projets', component: ProjectOverview },
     { path: '/update-db', exact: true, name: 'Mise à jour BD', component: UpdateDb },
     { path: '/gestion-comptes', exact: true, name: 'Gestion de comptes', component: UserAccount },
+    { path: '/page-introuvable', exact: true, name: 'Page introuvable', component: NotFound },
 ];
 
 export default routes;

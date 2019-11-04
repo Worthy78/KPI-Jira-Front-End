@@ -4,7 +4,7 @@ import windowSize from 'react-window-size';
 
 // import NavSearch from './NavSearch';
 import Aux from "../../../../../hoc/_Aux";
-import DEMO from "../../../../../store/constant";
+import DEMO from "../../../../../constants/constant";
 import * as actionTypes from "../../../../../store/actions";
 import ProjectSearch from './NavSearch/ProjectSearch';
 

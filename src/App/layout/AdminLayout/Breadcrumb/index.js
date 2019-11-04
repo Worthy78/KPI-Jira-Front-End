@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import config from '../../../../constants/config';
 import navigation from '../../../../menu-items';
-import DEMO from "../../../../store/constant";
+import DEMO from "../../../../constants/constant";
 import Aux from "../../../../hoc/_Aux";
 import PropTypes from 'prop-types'
 

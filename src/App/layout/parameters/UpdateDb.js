@@ -29,7 +29,9 @@ class UpdateDb extends React.Component {
         //         confirmLoading: false,
         //     });
         // }, 2000);
-
+        this.updateDB()
+    }
+    updateDB = () => {
         Axios
             .get(`${config.apiBaseUrl}/update`, tokenConfig())
             .then(res => {
@@ -45,9 +47,7 @@ class UpdateDb extends React.Component {
                     confirmLoading: false,
                 });
             });
-
     }
-
     render() {
         const { visible, confirmLoading } = this.state;
 
@@ -69,7 +69,7 @@ class UpdateDb extends React.Component {
                         </div>
                     }
                     <div className="text-right">
-                        <Button onClick={this.handleOk} className="py-1" style={{ background: "#F16E00", borderColor: "rgba(241, 110, 0, 0.78)" }}>
+                        <Button onClick={this.handleOk} disabled={confirmLoading}  className="py-1" style={{ background: "#F16E00", borderColor: "rgba(241, 110, 0, 0.78)" }}>
                             {confirmLoading ?
                                 "En cours..." :
                                 <UcFirst text={"Ok"} />
