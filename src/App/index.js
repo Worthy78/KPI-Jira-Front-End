@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
@@ -32,7 +32,6 @@ class App extends Component {
     }
 
     render() {
-        console.log('this.props.auth.isLoadingUser', this.props.auth.isLoadingUser)
         if (this.props.auth.isLoadingUser)
             //if (true)
             return (
@@ -45,25 +44,24 @@ class App extends Component {
                 </div>
             )
         else
-            console.log('this.props', this.props)
-        return (
-            <Aux>
-                <Fade big>
-                    <ScrollToTop>
-                        <Suspense fallback={<Loader />}>
-                            <Alerts />
-                            <Switch>
-                                {/* //auth/signin-1 */}
-                                <Route path="/auth/signin" exact={true} name='connexion' render={() => <Fade ><Signin /></Fade>} />
-                                {this.props.auth.isAuthenticated ?
-                                    <Route path="/" component={AdminLayout} /> : null
-                                }
-                            </Switch>
-                        </Suspense>
-                    </ScrollToTop>
-                </Fade>
-            </Aux>
-        );
+            return (
+                <Aux>
+                    <Fade big>
+                        <ScrollToTop>
+                            <Suspense fallback={<Loader />}>
+                                <Alerts />
+                                <Switch>
+                                    {/* //auth/signin-1 */}
+                                    <Route path="/auth/signin" exact={true} name='connexion' render={() => <Fade ><Signin /></Fade>} />
+                                    {this.props.auth.isAuthenticated ?
+                                        <Route path="/" component={AdminLayout} /> : null
+                                    }
+                                </Switch>
+                            </Suspense>
+                        </ScrollToTop>
+                    </Fade>
+                </Aux>
+            );
     }
 }
 

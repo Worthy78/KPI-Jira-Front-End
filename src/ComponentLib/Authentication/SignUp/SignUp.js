@@ -46,9 +46,9 @@ class SignUp extends React.Component {
                                 (<form onSubmit={this.onSubmit}>
                                     <div className="input-group mb-3">
                                         <input
-                                            type="email"
+                                            // type="email"
                                             className="form-control"
-                                            placeholder="Email"
+                                            placeholder="Nom"
                                             name="email"
                                             onChange={this.onChange}
                                             value={email}

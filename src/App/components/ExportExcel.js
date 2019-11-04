@@ -31,9 +31,16 @@ export const ExportExcel = ({ csvData, fileName, propColumns }) => {
 const formatJson = (csvData) => (
     csvData.map((sprint) => {
         const data = {}
+        if (sprint.projectName)
+            data['Plateau'] = sprint.projectName
         columns.forEach(({ title, dataIndex }) => {
             data[title] = sprint[dataIndex]
         })
         return data
     })
 )
+
+// {
+//     title: 'Plateau',
+//     dataIndex: 'projectName',
+// },
