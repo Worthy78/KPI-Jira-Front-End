@@ -106,6 +106,7 @@ export const loadUser = (token = undefined) => (dispatch, getState) => {
         .catch(err => {
             dispatch(authErrorMess(err));
             dispatch({ type: actionTypes.USER_LOADING_FAIL });
+            dispatch(logout());
         });
 };
 
@@ -116,7 +117,7 @@ export const logout = () => (dispatch, getState) => {
     //Reset token and expiration date
     localStorage.removeItem("token");
     localStorage.removeItem('expirationDate');
-
+    // REDIRECT TO LOGIN PAGE
     dispatch({
         type: actionTypes.LOGOUT_SUCCESS
     });

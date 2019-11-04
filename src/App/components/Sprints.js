@@ -57,10 +57,10 @@ class Sprints extends Component {
                 }
                 // Formating the data to be display
                 const sprintsData = payload.content.map(sprint => {
-                    const { name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration } = sprint;
+                    const { name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration, projectName } = sprint;
                     return {
                         "key": sprint.id,
-                        name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration
+                        name, startDate, endDate, state, nbIssues, bugs, usEngage, usRealise, stpEngage, stpRealise, completude, acceptanceUs, acceleration, projectName
                     };
                 })
                 this.setState({
@@ -85,7 +85,6 @@ class Sprints extends Component {
         if (this.props.boardId !== prevProps.boardId) {
             this.fetch()
         }
-
     }
     render() {
         return (

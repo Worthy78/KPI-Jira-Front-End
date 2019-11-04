@@ -19,7 +19,7 @@ dashColumns.unshift(
     }
 )
 // remove KPIs  &&  only show raw data extrated from JIRA
-dashColumns.splice(dashColumns.length - 4, 4);
+dashColumns.splice(dashColumns.length - 2, 2);
 
 const initPageSizeOptions = ['5', '10', '15', '20']
 class Dashboard extends Component {
@@ -100,7 +100,6 @@ class Dashboard extends Component {
         if (this.props.boardId !== prevProps.boardId) {
             this.fetch()
         }
-
     }
 
     // HANDLING DATE CHANGES
@@ -138,8 +137,9 @@ class Dashboard extends Component {
                 </Row>
 
                 <Row className="mt-2 justify-content-center ">
-                    < PerfectScrollbar className='py-2 px-2' ref={el => (this.componentRef = el)} >
-                        <Table columns={dashColumns} className='shadow-1 rounded'
+                    < PerfectScrollbar className='shadow-1 rounded ' ref={el => (this.componentRef = el)} >
+                        <Table columns={dashColumns}
+                            // className='shadow-1 rounded'
                             //rowKey={record => record.registered}
                             dataSource={this.state.data}
                             pagination={this.state.pagination}

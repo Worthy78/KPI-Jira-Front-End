@@ -31,12 +31,10 @@ export class Board extends Component {
     }
     componentDidMount() {
         this.fetchBoards()
-        //console.log('this.state.Boards', this.state.Boards)
     }
 
     onChooseBoard = (key) => {
         this.setState({ selectedBoard: key })
-        //console.log('key', key)
     }
 
     dataSourceFromSprintsTable = (dataSource) => {
@@ -103,7 +101,7 @@ const ShowDropDown = ({ boards, chooseBoard, mostRecentBoard }) => {
             //     variant={"dark"}
             //     className="ml-2"
             // >
-            <Select style={{ width: 300 }} defaultValue={boards[mostRecentBoard].id} onChange={chooseBoard}>
+            <Select size={"large"} style={{ width: 300 }} defaultValue={boards[mostRecentBoard].id} onChange={chooseBoard}>
                 {
                     boards.map(board =>
                         // <Dropdown.Item eventKey={board.id} key={board.id} id={board.id} onClick={(e) => chooseBoard(e)}>

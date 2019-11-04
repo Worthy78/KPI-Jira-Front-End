@@ -4,6 +4,7 @@ import windowSize from 'react-window-size';
 
 import Aux from "../../hoc/_Aux";
 import DEMO from "../../constants/constant";
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 class MainCard extends Component {
     state = {
@@ -101,11 +102,11 @@ class MainCard extends Component {
             <Card className={cardClass.join(' ')} style={fullScreenStyle}>
                 {cardHeader}
                 <Collapse in={!this.state.collapseCard}>
-                    <div>
+                    <PerfectScrollbar>
                         <Card.Body>
                             {this.props.children}
                         </Card.Body>
-                    </div>
+                    </PerfectScrollbar>
                 </Collapse>
                 {loader}
             </Card>

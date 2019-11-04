@@ -7,7 +7,8 @@ import UcFirst from '../../components/UcFirst';
 import Axios from 'axios';
 import config from '../../../constants/config';
 import { tokenConfig } from '../../utilitity';
-
+import { connect } from 'react-redux';
+import { getCategories } from '../../../store/actions/projectActions';
 class UpdateDb extends React.Component {
     state = {
         visible: true,
@@ -39,7 +40,8 @@ class UpdateDb extends React.Component {
                     this.setState({
                         confirmLoading: false,
                     });
-                }, 10000);
+                    getCategories()
+                }, 20000);
             })
             .catch(err => {
                 console.log('err', err)
@@ -69,7 +71,7 @@ class UpdateDb extends React.Component {
                         </div>
                     }
                     <div className="text-right">
-                        <Button onClick={this.handleOk} disabled={confirmLoading}  className="py-1" style={{ background: "#F16E00", borderColor: "rgba(241, 110, 0, 0.78)" }}>
+                        <Button onClick={this.handleOk} disabled={confirmLoading} className="py-1" style={{ background: "#F16E00", borderColor: "rgba(241, 110, 0, 0.78)" }}>
                             {confirmLoading ?
                                 "En cours..." :
                                 <UcFirst text={"Ok"} />
@@ -83,4 +85,4 @@ class UpdateDb extends React.Component {
     }
 }
 
-export default withRouter(UpdateDb);
+export default withRouter(connect(null, { getCategories }))(UpdateDb)
