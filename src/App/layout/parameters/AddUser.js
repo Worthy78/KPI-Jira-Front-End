@@ -4,7 +4,7 @@ import Aux from '../../../hoc/_Aux/index';
 import SignUp from '../../../ComponentLib/Authentication/SignUp/SignUp';
 
 
-function UserAccount() {
+function AddUser() {
     return (
         <Aux>
             <Row>
@@ -15,4 +15,4 @@ function UserAccount() {
         </Aux>
     )
 }
-export default UserAccount;
+export default AddUser;

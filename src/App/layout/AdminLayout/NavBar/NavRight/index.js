@@ -18,7 +18,7 @@ class NavRight extends Component {
                 <ul className="navbar-nav ml-auto">
                     <li className={this.props.rtlLayout ? 'm-r-15' : 'm-l-15'}>
                         <img src={Avatar2} className="img-radius img-fluid mt-2 pr-2" width="70px" alt="User Profile" />
-                        <span>{this.props.user.username}</span>
+                        <span>{this.props.user.name}</span>
                     </li>
                     <li>
                         <a href={DEMO.LOGIN} onClick={this.props.logout} className="dud-logout feather-16" title="Logout">

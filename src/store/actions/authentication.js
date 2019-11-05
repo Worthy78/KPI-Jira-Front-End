@@ -4,7 +4,7 @@ import axios from "axios";
 import * as actionTypes from "../actions";
 import config from "../../constants/config";
 import { tokenConfig } from "../../App/utilitity";
-import { authErrorMess, createMessage } from "./messages";
+import { authErrorMess, createMessage, errorMess } from "./messages";
 import { resetNavigation } from "../../menu-items";
 import { getCategories } from "./projectActions";
 
@@ -78,7 +78,7 @@ export const login = (username, password, stayConnected) => dispatch => {
         })
         .catch(err => {
             console.log('login error', err)
-            dispatch(authErrorMess(err));
+            dispatch(errorMess({ message: 'username ou mot de passe incorrect' }));
             dispatch({
                 type: actionTypes.LOGIN_FAIL
             });
@@ -147,6 +147,32 @@ export const register = ({ username, password, email }) => dispatch => {
             dispatch({
                 type: actionTypes.REGISTER_FAIL
             });
-            dispatch(authErrorMess(err));
+            //dispatch(authErrorMess(err));
+            dispatch(errorMess({ message: 'Utilisateur déjà existant ou mot de passe trop court(<6) ' }));
         });
 }
+
+
+// CHANGE PASSWORD
+export const changePassword = (passwordData) => (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.PASSWORD_CHANGE_START
+    })
+    axios
+        .post(`${config.apiBaseUrl}/api/auth/updatePassword?password=${passwordData.newPassword1}&oldpassword=${passwordData.oldPassword}`, null, tokenConfig())
+        .then(res => {
+            dispatch(createMessage("Mot de passe changé avec Success"))
+            dispatch({
+                type: actionTypes.PASSWORD_CHANGE_SUCCESS
+            })
+        })
+        .catch(err => {
+            console.log('err.data', err.data)
+            console.log('err.dataded', err)
+            console.log('err.dataded', err.message)
+            dispatch(authErrorMess(err));
+            dispatch({
+                type: actionTypes.PASSWORD_CHANGE_FAILED
+            });
+        });
+};

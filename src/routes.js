@@ -20,7 +20,8 @@ const Nvd3Chart = React.lazy(() => import('./ComponentLib/Charts/Nvd3Chart/index
 //My imports 
 const ProjectOverview = React.lazy(() => import('./ComponentLib/Dashboard/Projects'));
 const UpdateDb = React.lazy(() => import('./App/layout/Parameters/UpdateDb'));
-const UserAccount = React.lazy(() => import('./App/layout/Parameters/UserAccount'));
+const AddUser = React.lazy(() => import('./App/layout/Parameters/AddUser'));
+const ChangePwd = React.lazy(() => import('./ComponentLib/Authentication/ChangePwd'));
 const Dashboard = React.lazy(() => import('./ComponentLib/Dashboard/Dashboard'));
 const NotFound = React.lazy(() => import('./App/layout/NotFound'));
 
@@ -40,7 +41,8 @@ const routes = [
     { path: '/projets/category/:id', exact: true, name: 'Projets', component: ProjectOverview },
     { path: '/projets/uncategorized', exact: true, name: 'Projets', component: ProjectOverview },
     { path: '/update-db', exact: true, name: 'Mise à jour BD', component: UpdateDb },
-    { path: '/gestion-comptes', exact: true, name: 'Gestion de comptes', component: UserAccount },
+    { path: '/ajout-utilisateur', exact: true, name: 'Nouveau utilisateur', component: AddUser },
+    { path: '/changer-de-mot-de-passe', exact: true, name: 'Changement de mot de passe', component: ChangePwd },
     { path: '/page-introuvable', exact: true, name: 'Page introuvable', component: NotFound },
 ];
 

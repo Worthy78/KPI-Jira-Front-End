@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import { compose } from 'redux'
 import { Modal } from 'antd';
 import { Button } from 'react-bootstrap';
 import Loading from '../../components/Loader/Loading';
@@ -16,20 +17,13 @@ class UpdateDb extends React.Component {
     }
 
     handleOk = () => {
-        console.log('ok')
         this.props.history.goBack()
-
     }
 
     componentDidMount() {
         this.setState({
             confirmLoading: true,
         });
-        // setTimeout(() => {
-        //     this.setState({
-        //         confirmLoading: false,
-        //     });
-        // }, 2000);
         this.updateDB()
     }
     updateDB = () => {
@@ -79,10 +73,13 @@ class UpdateDb extends React.Component {
                         </Button>
                     </div>
                 </Modal>
-                {/* {visible ? info(confirmLoading, this.onOk) : null} */}
+
             </div>
         );
     }
 }
 
-export default withRouter(connect(null, { getCategories }))(UpdateDb)
+export default compose(
+    withRouter,
+    connect(null, { getCategories })
+)(UpdateDb)

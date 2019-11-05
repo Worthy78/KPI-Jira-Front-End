@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
@@ -54,7 +54,7 @@ class App extends Component {
                                     {/* //auth/signin-1 */}
                                     <Route path="/auth/signin" exact={true} name='connexion' render={() => <Fade ><Signin /></Fade>} />
                                     {this.props.auth.isAuthenticated ?
-                                        <Route path="/" component={AdminLayout} /> : null
+                                        <Route path="/" component={AdminLayout} /> : <Redirect to='/auth/signin' />
                                     }
                                 </Switch>
                             </Suspense>

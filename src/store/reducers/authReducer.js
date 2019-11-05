@@ -4,7 +4,7 @@ import updateObject from '../../App/utilitity';
 const initState = {
   authError: null,
   //AUTH
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem("token") ? true : false,
   isLoading: false,
   isLoadingUser: false,
   accessToken: localStorage.getItem("token"),
@@ -68,6 +68,7 @@ const authReducer = (state = initState, action) => {
     //HANDLING  LOADING START
     case actionTypes.REGISTER_START:
     case actionTypes.LOGIN_START:
+    case actionTypes.PASSWORD_CHANGE_START:
       return loading(state, 'isLoading');
 
     case actionTypes.USER_LOADING_START:
@@ -80,6 +81,8 @@ const authReducer = (state = initState, action) => {
     case actionTypes.REGISTER_SUCCESS:
     case actionTypes.REGISTER_FAIL:
     case actionTypes.LOGIN_FAIL:
+    case actionTypes.PASSWORD_CHANGE_SUCCESS:
+    case actionTypes.PASSWORD_CHANGE_FAILED:
       return loadingFinished(state, 'isLoading')
 
     case actionTypes.USER_LOADING_FAIL:

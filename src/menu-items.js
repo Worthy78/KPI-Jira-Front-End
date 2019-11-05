@@ -33,14 +33,7 @@ export const initNavigation = [
                         url: '/projets/uncategorized'
                     }
                 ]
-            },
-            // {
-            //     id: 'projects',
-            //     title: 'Tout les projets',
-            //     type: 'item',
-            //     icon: 'feather icon-package',
-            //     url: '/projets'
-            // }
+            }
         ]
     },
     {
@@ -55,9 +48,25 @@ export const initNavigation = [
                 type: 'item',
                 url: '/update-db',
                 icon: 'feather icon-refresh-cw'
+            },
+            {
+                id: 'account',
+                title: 'Gestion comptes',
+                type: 'collapse',
+                icon: 'feather icon-users',
+                children: [
+                    {
+                        id: 'pwdChange',
+                        title: 'Mot de passe',
+                        type: 'item',
+                        icon: 'feather icon-lock',
+                        url: '/changer-de-mot-de-passe'
+                    }
+                ]
             }
         ]
     }
+
 ]
 
 const navigation = { items: JSON.parse(JSON.stringify(initNavigation)) }
@@ -82,14 +91,14 @@ function addCategoriesToNav(categories) {
 
 // ONLY ADMIN CAN CREATE ACCOUNTS
 function upadateParametersNav(username) {
-    const parametersMenuItem = navigation.items[navigation.items.length - 1].children
+    const parametersMenuItemChild = navigation.items[navigation.items.length - 1].children[1].children
     if (username === "admin")
-        parametersMenuItem.push({
-            id: 'account',
-            title: 'Gestion comptes',
+        parametersMenuItemChild.push({
+            id: 'addUser',
+            title: 'Ajout utilisateur',
             type: 'item',
-            icon: 'feather icon-users',
-            url: '/gestion-comptes'
+            icon: 'feather icon-user-plus',
+            url: '/ajout-utilisateur'
         })
 }
 
