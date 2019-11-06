@@ -2,6 +2,10 @@
 #### Stage 2: Serve the React application from Nginx 
 FROM bitnami/nginx:latest
 
+
+# Copy our custom nginx config
+COPY nginx.conf /opt/bitnami/nginx/conf/nginx.conf
+
 # Copy the react build from Stage 1
 COPY build /app
 
