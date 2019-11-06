@@ -3,12 +3,10 @@ import React from "react";
 
 import {
     Button,
-    Card,
     Alert
 } from "react-bootstrap";
 import { Modal } from "antd";
 import { connect } from "react-redux";
-import { objectIsEmpty } from "../../App/utilitity";
 import Loading from "../../App/components/Loader/Loading";
 import { changePassword } from "../../store/actions/authentication";
 
